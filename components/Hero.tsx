@@ -166,7 +166,7 @@ export default function Hero() {
               Trusted
             </span>
             <br />
-            Healthcare
+            Pharmaceutical
             <br />
             <span className="text-white/40">Partner</span>
           </h1>
