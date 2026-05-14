@@ -15,8 +15,8 @@ const markets = [
       "Regional coverage across Indian states",
     ],
     icon: "🇮🇳",
-    color: "#0583F2",
-    gradient: "from-[#0583F2]/20 to-[#1EB7D9]/5",
+    color: "#1fb8e5",
+    gradient: "from-[#1fb8e5]/20 to-[#f6b11b]/5",
   },
   {
     title: "International Market",
@@ -29,8 +29,8 @@ const markets = [
       "Flexible MOQ for global partners",
     ],
     icon: "🌍",
-    color: "#1EB7D9",
-    gradient: "from-[#1EB7D9]/20 to-[#0583F2]/5",
+    color: "#f6b11b",
+    gradient: "from-[#f6b11b]/20 to-[#1fb8e5]/5",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Markets() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="markets" className="relative py-32 bg-[#080808] overflow-hidden">
+    <section id="markets" className="relative w-full overflow-hidden bg-white py-32">
       {/* Decorative diagonal */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div
@@ -60,19 +60,19 @@ export default function Markets() {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-[#0583F2]/40 bg-[#0583F2]/10 text-[#1EB7D9] text-xs font-semibold tracking-widest uppercase mb-6">
+          <span className="inline-block px-3 py-1 rounded-full border border-[#1fb8e5]/40 bg-[#1fb8e5]/10 text-[#f6b11b] text-xs font-semibold tracking-widest uppercase mb-6">
             Market Reach
           </span>
-          <h2 className="text-4xl lg:text-6xl font-black text-white leading-tight mb-6">
+          <h2 className="text-4xl lg:text-6xl font-black text-slate-950 leading-tight mb-6">
             Domestic &{" "}
-            <span className="text-transparent bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text">
               International
             </span>
             <br />
             Markets
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto text-base leading-relaxed font-light">
-            From local healthcare to global pharmaceutical supplies — Rivpra's
+          <p className="text-slate-500 max-w-xl mx-auto text-base leading-relaxed font-light">
+            From local healthcare to global pharmaceutical supplies — Rivpra&apos;s
             quality reaches across borders.
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export default function Markets() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: i * 0.15 }}
               whileHover={{ y: -4 }}
-              className={`group relative p-10 rounded-3xl border border-white/8 bg-gradient-to-br ${market.gradient} backdrop-blur-sm overflow-hidden cursor-default`}
+              className={`group relative p-10 rounded-3xl border border-slate-200 bg-gradient-to-br ${market.gradient} backdrop-blur-sm overflow-hidden cursor-default`}
             >
               {/* Glow */}
               <div
@@ -98,7 +98,7 @@ export default function Markets() {
               <div className="flex items-start justify-between mb-8">
                 <div>
                   <div className="text-5xl mb-4">{market.icon}</div>
-                  <h3 className="text-white font-black text-2xl mb-1">
+                  <h3 className="text-slate-950 font-black text-2xl mb-1">
                     {market.title}
                   </h3>
                   <div
@@ -132,7 +132,7 @@ export default function Markets() {
                 </div>
               </div>
 
-              <p className="text-white/50 text-sm leading-relaxed mb-8 font-light">
+              <p className="text-slate-500 text-sm leading-relaxed mb-8 font-light">
                 {market.desc}
               </p>
 
@@ -144,7 +144,7 @@ export default function Markets() {
                       className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                       style={{ background: market.color }}
                     />
-                    <span className="text-white/60 text-sm">{point}</span>
+                    <span className="text-slate-600 text-sm">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -157,13 +157,13 @@ export default function Markets() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 p-8 rounded-3xl border border-[#F2A81D]/20 bg-gradient-to-r from-[#F2A81D]/8 to-[#D9CD2B]/5 flex flex-col sm:flex-row items-center justify-between gap-6"
+          className="mt-12 p-8 rounded-3xl border border-[#f6b11b]/20 bg-gradient-to-r from-[#f6b11b]/8 to-[#ddd82a]/5 flex flex-col sm:flex-row items-center justify-between gap-6"
         >
           <div>
-            <div className="text-[#F2A81D] font-bold text-lg mb-1">
+            <div className="text-[#f6b11b] font-bold text-lg mb-1">
               Looking to partner with us?
             </div>
-            <div className="text-white/50 text-sm">
+            <div className="text-slate-500 text-sm">
               Reach out to explore contract manufacturing and supply opportunities.
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function Markets() {
             onClick={() =>
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })
             }
-            className="flex-shrink-0 px-7 py-3.5 rounded-full border border-[#F2A81D]/50 text-[#F2A81D] text-sm font-semibold hover:bg-[#F2A81D]/10 transition-all duration-300 whitespace-nowrap"
+            className="flex-shrink-0 px-7 py-3.5 rounded-full border border-[#f6b11b]/50 text-[#f6b11b] text-sm font-semibold hover:bg-[#f6b11b]/10 transition-all duration-300 whitespace-nowrap"
           >
             Contact Us →
           </button>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -21,7 +21,7 @@ const track = [...clients, ...clients];
 
 export default function StatsStrip() {
   return (
-    <section className="relative z-10 overflow-hidden bg-[#0D0D0D] border-y border-white/[0.06] py-10">
+    <section className="relative z-10 w-full overflow-hidden border-y border-slate-200 bg-white py-10">
       {/* Subtle dot pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -33,10 +33,10 @@ export default function StatsStrip() {
 
       {/* Heading */}
       <div className="relative mb-8 text-center">
-        <span className="mb-2 inline-block rounded-full border border-[#0583F2]/40 bg-[#0583F2]/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#1EB7D9]">
+        <span className="mb-2 inline-block rounded-full border border-[#1fb8e5]/40 bg-[#1fb8e5]/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#f6b11b]">
           Our Clients
         </span>
-        <p className="mt-2 text-sm font-light text-white/40">
+        <p className="mt-2 text-sm font-light text-slate-500">
           Driving technology for leading brands
         </p>
       </div>
@@ -44,8 +44,8 @@ export default function StatsStrip() {
       {/* Marquee track */}
       <div className="relative overflow-hidden">
         {/* Fade + blur edges */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-40 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/80 to-transparent backdrop-blur-none" style={{maskImage: 'linear-gradient(to right, black 40%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, black 40%, transparent 100%)'}} />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-40 bg-gradient-to-l from-[#0D0D0D] via-[#0D0D0D]/80 to-transparent" style={{maskImage: 'linear-gradient(to left, black 40%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, black 40%, transparent 100%)'}} />
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-40 bg-gradient-to-r from-white via-white/80 to-transparent backdrop-blur-none" style={{maskImage: 'linear-gradient(to right, white 40%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, white 40%, transparent 100%)'}} />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-40 bg-gradient-to-l from-white via-white/80 to-transparent" style={{maskImage: 'linear-gradient(to left, white 40%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, white 40%, transparent 100%)'}} />
 
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
@@ -53,7 +53,7 @@ export default function StatsStrip() {
           className="flex gap-4 w-max"
         >
           {track.map((src, i) => {
-            const accent = ["#0583F2","#1EB7D9","#D9CD2B","#F2A81D"][i % 4];
+            const accent = ["#1fb8e5","#f6b11b","#ddd82a","#f6b11b"][i % 4];
             return (
               <div
                 key={i}

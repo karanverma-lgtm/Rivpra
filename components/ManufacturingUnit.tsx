@@ -8,37 +8,37 @@ const capabilities = [
   {
     label: "Tablet Section",
     value: "374.50 Million Tablets",
-    color: "#0583F2",
+    color: "#1fb8e5",
   },
   {
     label: "Capsule Section",
     value: "46.80 Million Capsules",
-    color: "#1EB7D9",
+    color: "#f6b11b",
   },
   {
     label: "Liquid Section",
     value: "15.60 Million Bottles",
-    color: "#D9CD2B",
+    color: "#ddd82a",
   },
   {
     label: "Sachet Section",
     value: "3.12 Million Sachets",
-    color: "#F2A81D",
+    color: "#f6b11b",
   },
   {
     label: "Dry Powder Suspension",
     value: "4.68 Million Bottles",
-    color: "#0583F2",
+    color: "#1fb8e5",
   },
   {
     label: "Tubes Section",
     value: "5.0 Million Tubes",
-    color: "#1EB7D9",
+    color: "#f6b11b",
   },
   {
     label: "Lotion Section",
     value: "1.0 Million Bottles",
-    color: "#D9CD2B",
+    color: "#ddd82a",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function ManufacturingUnit() {
   return (
     <section
       id="manufacturing"
-      className="relative overflow-hidden bg-[#080808] py-28"
+      className="relative w-full overflow-hidden bg-white py-28"
     >
       {/* Grid bg */}
       <div
@@ -68,8 +68,8 @@ export default function ManufacturingUnit() {
       />
 
       {/* Glow blobs */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-[#0583F2]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-[#1EB7D9]/8 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-[#1fb8e5]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-[#f6b11b]/8 blur-[100px]" />
 
       <div ref={ref} className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* ── Header ── */}
@@ -79,16 +79,16 @@ export default function ManufacturingUnit() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="mb-4 inline-block rounded-full border border-[#0583F2]/40 bg-[#0583F2]/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#1EB7D9]">
+          <span className="mb-4 inline-block rounded-full border border-[#1fb8e5]/40 bg-[#1fb8e5]/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#f6b11b]">
             Manufacturing
           </span>
-          <h2 className="mb-3 text-4xl font-black text-white lg:text-6xl">
+          <h2 className="mb-3 text-4xl font-black text-slate-950 lg:text-6xl">
             We are committed to delivering{" "}
-            <span className="bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text text-transparent">
               quality products
             </span>
           </h2>
-          <p className="mt-2 text-base font-semibold text-[#F2A81D]">
+          <p className="mt-2 text-base font-semibold text-[#f6b11b]">
             Best Contract Manufacturing Pharmaceutical Company in India
           </p>
         </motion.div>
@@ -102,20 +102,20 @@ export default function ManufacturingUnit() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="flex flex-col gap-5"
           >
-            <p className="text-sm font-light leading-relaxed text-white/60 lg:text-base">
+            <p className="text-sm font-light leading-relaxed text-slate-600 lg:text-base">
               Our Ultra-modern facility at{" "}
-              <span className="font-medium text-white">SIDCUL, Haridwar</span>{" "}
+              <span className="font-medium text-slate-950">SIDCUL, Haridwar</span>{" "}
               complies with the{" "}
-              <span className="font-medium text-[#1EB7D9]">WHO-cGMP &amp; GMP</span>{" "}
+              <span className="font-medium text-[#f6b11b]">WHO-cGMP &amp; GMP</span>{" "}
               standards and is spread over a{" "}
-              <span className="font-medium text-white">3600 sq. area</span>. We
+              <span className="font-medium text-slate-950">3600 sq. area</span>. We
               have collaborated with the best API manufacturers and are equipped
               with the latest machinery to ensure timely deliveries and superior
               quality of products that have helped us to reinforce our position
               in the field of pharmaceuticals. We have got the best Air handling
               unit in the whole of Uttarakhand.
             </p>
-            <p className="text-sm font-light leading-relaxed text-white/50 lg:text-base">
+            <p className="text-sm font-light leading-relaxed text-slate-500 lg:text-base">
               Our people are constantly being upgraded with the technical
               know-how and latest breakthroughs in the pharma industry so as to
               implement high-quality systems across our manufacturing facilities
@@ -128,7 +128,7 @@ export default function ManufacturingUnit() {
                 (b) => (
                   <span
                     key={b}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-white/60"
+                    className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-600"
                   >
                     {b}
                   </span>
@@ -143,9 +143,9 @@ export default function ManufacturingUnit() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <h3 className="mb-6 text-lg font-bold text-white">
+            <h3 className="mb-6 text-lg font-bold text-slate-950">
               Our Capabilities{" "}
-              <span className="text-xs font-normal text-white/40">
+              <span className="text-xs font-normal text-slate-500">
                 (per shift per annum)
               </span>
             </h3>
@@ -165,8 +165,8 @@ export default function ManufacturingUnit() {
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.06 }}
                   className="flex items-start gap-3"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#0583F2]" />
-                  <span className="text-sm text-white/60">{item}</span>
+                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#1fb8e5]" />
+                  <span className="text-sm text-slate-600">{item}</span>
                 </motion.div>
               ))}
 
@@ -178,7 +178,7 @@ export default function ManufacturingUnit() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.5 + i * 0.07 }}
-                    className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05]"
+                    className="group rounded-xl border border-slate-200 bg-white p-3 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50"
                   >
                     {/* accent top bar */}
                     <div
@@ -191,7 +191,7 @@ export default function ManufacturingUnit() {
                     >
                       {cap.value}
                     </div>
-                    <div className="mt-1 text-[10px] font-medium uppercase tracking-wider text-white/40">
+                    <div className="mt-1 text-[10px] font-medium uppercase tracking-wider text-slate-500">
                       {cap.label}
                     </div>
                   </motion.div>
@@ -207,22 +207,22 @@ export default function ManufacturingUnit() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="mb-5 text-xs font-medium uppercase tracking-widest text-white/30">
+          <p className="mb-5 text-xs font-medium uppercase tracking-widest text-slate-400">
             Our Facility
           </p>
 
           <div className="relative overflow-hidden">
             {/* Fade edges */}
             <div
-              className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 from-[#080808] to-transparent"
+              className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 from-white to-transparent"
               style={{
-                background: "linear-gradient(to right, #080808 40%, transparent)",
+                background: "linear-gradient(to right, #ffffff 40%, transparent)",
               }}
             />
             <div
               className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32"
               style={{
-                background: "linear-gradient(to left, #080808 40%, transparent)",
+                background: "linear-gradient(to left, #ffffff 40%, transparent)",
               }}
             />
 
@@ -234,7 +234,7 @@ export default function ManufacturingUnit() {
               {track.map((src, i) => (
                 <div
                   key={i}
-                  className="group relative h-52 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10"
+                  className="group relative h-52 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-slate-200"
                 >
                   <Image
                     src={src}
@@ -243,8 +243,8 @@ export default function ManufacturingUnit() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="320px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/60 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-[#0583F2]/0 transition-colors duration-500 group-hover:bg-[#0583F2]/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-[#1fb8e5]/0 transition-colors duration-500 group-hover:bg-[#1fb8e5]/10" />
                 </div>
               ))}
             </motion.div>

@@ -53,20 +53,20 @@ function DNAHelix() {
   return (
     <group ref={groupRef}>
       {/* Strand 1 — blue */}
-      <Line points={strand1} color="#0583F2" lineWidth={2.5} />
+      <Line points={strand1} color="#1fb8e5" lineWidth={2.5} />
       {/* Strand 2 — teal */}
-      <Line points={strand2} color="#1EB7D9" lineWidth={2.5} />
+      <Line points={strand2} color="#f6b11b" lineWidth={2.5} />
 
       {/* Rungs — yellow */}
       {rungPairs.map((pair, i) => (
-        <Line key={i} points={pair} color="#D9CD2B" lineWidth={1.2} opacity={0.6} transparent />
+        <Line key={i} points={pair} color="#ddd82a" lineWidth={1.2} opacity={0.6} transparent />
       ))}
 
       {/* Atoms on strand 1 */}
       {atomsA.map((pos, i) => (
         <mesh key={`a1-${i}`} position={pos}>
           <sphereGeometry args={[0.09, 12, 12]} />
-          <meshStandardMaterial color="#0583F2" emissive="#0583F2" emissiveIntensity={1.2} />
+          <meshStandardMaterial color="#1fb8e5" emissive="#1fb8e5" emissiveIntensity={1.2} />
         </mesh>
       ))}
 
@@ -74,7 +74,7 @@ function DNAHelix() {
       {atomsB.map((pos, i) => (
         <mesh key={`a2-${i}`} position={pos}>
           <sphereGeometry args={[0.09, 12, 12]} />
-          <meshStandardMaterial color="#1EB7D9" emissive="#1EB7D9" emissiveIntensity={1.2} />
+          <meshStandardMaterial color="#f6b11b" emissive="#f6b11b" emissiveIntensity={1.2} />
         </mesh>
       ))}
 
@@ -83,11 +83,11 @@ function DNAHelix() {
         <group key={`rp-${i}`}>
           <mesh position={a}>
             <sphereGeometry args={[0.13, 12, 12]} />
-            <meshStandardMaterial color="#F2A81D" emissive="#F2A81D" emissiveIntensity={1} />
+            <meshStandardMaterial color="#f6b11b" emissive="#f6b11b" emissiveIntensity={1} />
           </mesh>
           <mesh position={b}>
             <sphereGeometry args={[0.13, 12, 12]} />
-            <meshStandardMaterial color="#D9CD2B" emissive="#D9CD2B" emissiveIntensity={1} />
+            <meshStandardMaterial color="#ddd82a" emissive="#ddd82a" emissiveIntensity={1} />
           </mesh>
         </group>
       ))}
@@ -103,7 +103,7 @@ export default function Welcome() {
   return (
     <section
       id="welcome"
-      className="relative py-28 bg-[#0D0D0D] overflow-hidden"
+      className="relative w-full overflow-hidden bg-white py-28"
     >
       {/* 3D DNA Helix Background */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-25">
@@ -113,16 +113,16 @@ export default function Welcome() {
           gl={{ alpha: true, antialias: true }}
         >
           <ambientLight intensity={0.4} />
-          <pointLight position={[5, 5, 5]} intensity={1.5} color="#0583F2" />
-          <pointLight position={[-5, -5, 5]} intensity={1} color="#1EB7D9" />
+          <pointLight position={[5, 5, 5]} intensity={1.5} color="#1fb8e5" />
+          <pointLight position={[-5, -5, 5]} intensity={1} color="#f6b11b" />
           <DNAHelix />
         </Canvas>
       </div>
 
       {/* Ambient glow left */}
-      <div className="pointer-events-none absolute -left-48 top-1/3 h-[500px] w-[500px] rounded-full bg-[#0583F2]/10 blur-[120px] z-[1]" />
+      <div className="pointer-events-none absolute -left-48 top-1/3 h-[500px] w-[500px] rounded-full bg-[#1fb8e5]/10 blur-[120px] z-[1]" />
       {/* Ambient glow right */}
-      <div className="pointer-events-none absolute -right-48 bottom-0 h-[400px] w-[400px] rounded-full bg-[#1EB7D9]/8 blur-[100px] z-[1]" />
+      <div className="pointer-events-none absolute -right-48 bottom-0 h-[400px] w-[400px] rounded-full bg-[#f6b11b]/8 blur-[100px] z-[1]" />
 
       <div
         ref={ref}
@@ -136,35 +136,35 @@ export default function Welcome() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             {/* Label badge */}
-            <span className="mb-5 inline-block rounded-full border border-[#0583F2]/40 bg-[#0583F2]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#1EB7D9]">
+            <span className="mb-5 inline-block rounded-full border border-[#1fb8e5]/40 bg-[#1fb8e5]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#f6b11b]">
               Welcome to Rivpra Formulation
             </span>
 
-            <h2 className="mb-6 text-4xl font-black leading-tight text-white lg:text-5xl">
+            <h2 className="mb-6 text-4xl font-black leading-tight text-slate-950 lg:text-5xl">
               A Trusted, Reliable
               <br />
-              <span className="bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text text-transparent">
                 Healthcare Partner
               </span>
             </h2>
 
-            <p className="mb-5 text-base font-light leading-relaxed text-white/70 lg:text-lg">
+            <p className="mb-5 text-base font-light leading-relaxed text-slate-700 lg:text-lg">
               Rivpra Formulation is an integrated pharmaceutical company with
               core competency in the development and manufacture of highly
               effective and affordable medicines to treat various ailments and
               diseases.
             </p>
 
-            <p className="mb-10 text-sm font-light leading-relaxed text-white/50 lg:text-base">
+            <p className="mb-10 text-sm font-light leading-relaxed text-slate-500 lg:text-base">
               Established in{" "}
-              <span className="font-medium text-[#F2A81D]">2008</span>, Rivpra
+              <span className="font-medium text-[#f6b11b]">2008</span>, Rivpra
               Formulations is a{" "}
-              <span className="font-medium text-white">
+              <span className="font-medium text-slate-950">
                 debt-free, profit-making
               </span>{" "}
               ISO-certified pharmaceutical company with a state-of-the-art
               infrastructure set up in compliance with{" "}
-              <span className="font-medium text-white">WHO-cGMP</span>{" "}
+              <span className="font-medium text-slate-950">WHO-cGMP</span>{" "}
               standards.
             </p>
 
@@ -173,7 +173,7 @@ export default function Welcome() {
               href="#about"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#0583F2]/30 transition-shadow hover:shadow-[#0583F2]/50"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-[#1fb8e5]/30 transition-shadow hover:shadow-[#1fb8e5]/50"
             >
               View More
               <svg
@@ -200,12 +200,12 @@ export default function Welcome() {
             className="relative"
           >
             {/* Glow behind video */}
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#0583F2]/20 to-[#1EB7D9]/10 blur-2xl" />
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#1fb8e5]/20 to-[#f6b11b]/10 blur-2xl" />
 
             {/* Video wrapper — 16:9 */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/60">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 shadow-2xl shadow-slate-200/80">
               {/* corner accent */}
-              <div className="absolute left-0 top-0 h-12 w-12 rounded-br-2xl bg-gradient-to-br from-[#0583F2] to-[#1EB7D9] opacity-80" />
+              <div className="absolute left-0 top-0 h-12 w-12 rounded-br-2xl bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] opacity-80" />
 
               <div className="relative aspect-video w-full">
                 <iframe
@@ -219,9 +219,9 @@ export default function Welcome() {
             </div>
 
             {/* ISO badge */}
-            <div className="absolute -bottom-4 -right-4 flex items-center gap-2 rounded-full border border-[#D9CD2B]/40 bg-[#0D0D0D] px-4 py-2 shadow-xl">
-              <span className="h-2 w-2 rounded-full bg-[#D9CD2B]" />
-              <span className="text-xs font-semibold tracking-wider text-[#D9CD2B]">
+            <div className="absolute -bottom-4 -right-4 flex items-center gap-2 rounded-full border border-[#ddd82a]/40 bg-white px-4 py-2 shadow-xl">
+              <span className="h-2 w-2 rounded-full bg-[#ddd82a]" />
+              <span className="text-xs font-semibold tracking-wider text-[#ddd82a]">
                 ISO CERTIFIED · WHO-cGMP
               </span>
             </div>

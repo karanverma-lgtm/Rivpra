@@ -7,25 +7,25 @@ const certifications = [
   {
     title: "ISO Certified",
     desc: "International Organization for Standardization — ensuring quality management across all processes.",
-    color: "#0583F2",
+    color: "#1fb8e5",
     icon: "🏆",
   },
   {
     title: "WHO-cGMP",
     desc: "World Health Organization current Good Manufacturing Practices — the global gold standard.",
-    color: "#1EB7D9",
+    color: "#f6b11b",
     icon: "✅",
   },
   {
     title: "SIDCUL Facility",
     desc: "State Industrial Development Corporation of Uttarakhand — prime industrial infrastructure.",
-    color: "#D9CD2B",
+    color: "#ddd82a",
     icon: "🏭",
   },
   {
     title: "Debt-Free",
     desc: "Financially sound and profit-making since inception — a stable, trusted business partner.",
-    color: "#F2A81D",
+    color: "#f6b11b",
     icon: "💰",
   },
 ];
@@ -44,9 +44,9 @@ export default function Quality() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="quality" className="relative py-32 bg-[#0D0D0D] overflow-hidden">
+    <section id="quality" className="relative w-full overflow-hidden bg-white py-32">
       {/* Radial glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[80px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(5,131,242,0.08) 0%, transparent 70%)" }} />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[80px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(31,184,229,0.08) 0%, transparent 70%)" }} />
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -56,17 +56,17 @@ export default function Quality() {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-[#0583F2]/40 bg-[#0583F2]/10 text-[#1EB7D9] text-xs font-semibold tracking-widest uppercase mb-6">
+          <span className="inline-block px-3 py-1 rounded-full border border-[#1fb8e5]/40 bg-[#1fb8e5]/10 text-[#f6b11b] text-xs font-semibold tracking-widest uppercase mb-6">
             Quality & Compliance
           </span>
-          <h2 className="text-4xl lg:text-6xl font-black text-white leading-tight mb-6">
+          <h2 className="text-4xl lg:text-6xl font-black text-slate-950 leading-tight mb-6">
             Uncompromising
             <br />
-            <span className="text-transparent bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text">
               Quality Standards
             </span>
           </h2>
-          <p className="text-white/50 max-w-2xl mx-auto text-base leading-relaxed font-light">
+          <p className="text-slate-500 max-w-2xl mx-auto text-base leading-relaxed font-light">
             Every product that leaves our facility undergoes rigorous quality checks
             to ensure safety, efficacy and compliance with global standards.
           </p>
@@ -81,7 +81,7 @@ export default function Quality() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * i }}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="group relative p-7 rounded-2xl border border-white/8 bg-white/[0.03] overflow-hidden cursor-default"
+              className="group relative p-7 rounded-2xl border border-slate-200 bg-white overflow-hidden cursor-default"
             >
               {/* Background glow on hover */}
               <div
@@ -104,7 +104,7 @@ export default function Quality() {
               >
                 {cert.title}
               </h3>
-              <p className="text-white/40 text-xs leading-relaxed">{cert.desc}</p>
+              <p className="text-slate-500 text-xs leading-relaxed">{cert.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -116,9 +116,9 @@ export default function Quality() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <h3 className="text-3xl font-black text-white mb-8">
+            <h3 className="text-3xl font-black text-slate-950 mb-8">
               Our Quality{" "}
-              <span className="text-transparent bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text">
                 Commitment
               </span>
             </h3>
@@ -131,9 +131,9 @@ export default function Quality() {
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.07 }}
                   className="flex items-start gap-4"
                 >
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-gradient-to-br from-[#0583F2] to-[#1EB7D9] flex items-center justify-center flex-shrink-0">
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-3 h-3 text-white"
+                      className="w-3 h-3 text-slate-950"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -146,7 +146,7 @@ export default function Quality() {
                       />
                     </svg>
                   </div>
-                  <span className="text-white/60 text-sm leading-relaxed">
+                  <span className="text-slate-600 text-sm leading-relaxed">
                     {point}
                   </span>
                 </motion.li>
@@ -161,20 +161,20 @@ export default function Quality() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 p-8 bg-white/[0.03]">
+            <div className="relative rounded-3xl overflow-hidden border border-slate-200 p-8 bg-white">
               {/* Centered quality badge */}
               <div className="flex flex-col items-center justify-center text-center py-12">
                 <div className="relative w-32 h-32 mb-6">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#0583F2] to-[#1EB7D9] opacity-20 animate-pulse" />
-                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-[#0583F2] to-[#1EB7D9] opacity-30" />
-                  <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#0583F2] to-[#1EB7D9] flex items-center justify-center">
-                    <span className="text-white font-black text-2xl">Q</span>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] opacity-20 animate-pulse" />
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] opacity-30" />
+                  <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] flex items-center justify-center">
+                    <span className="text-slate-950 font-black text-2xl">Q</span>
                   </div>
                 </div>
-                <div className="text-white font-black text-2xl mb-2">
+                <div className="text-slate-950 font-black text-2xl mb-2">
                   Quality First
                 </div>
-                <div className="text-white/40 text-sm max-w-xs">
+                <div className="text-slate-500 text-sm max-w-xs">
                   Every batch manufactured adheres to international quality
                   benchmarks before reaching patients worldwide.
                 </div>
@@ -185,10 +185,10 @@ export default function Quality() {
                     { v: "Zero", l: "Compromise" },
                   ].map((s) => (
                     <div key={s.l} className="text-center">
-                      <div className="text-3xl font-black text-transparent bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text">
+                      <div className="text-3xl font-black text-transparent bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text">
                         {s.v}
                       </div>
-                      <div className="text-white/40 text-xs tracking-wide mt-1">
+                      <div className="text-slate-500 text-xs tracking-wide mt-1">
                         {s.l}
                       </div>
                     </div>

@@ -8,16 +8,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { label: "Tablets", icon: "💊", color: "#0583F2" },
-  { label: "Capsules", icon: "🔵", color: "#1EB7D9" },
-  { label: "HPMC Capsules", icon: "🟡", color: "#D9CD2B" },
-  { label: "Syrups", icon: "🧪", color: "#F2A81D" },
-  { label: "Sachets", icon: "📦", color: "#0583F2" },
-  { label: "Multivitamins", icon: "⭐", color: "#1EB7D9" },
-  { label: "Creams", icon: "🧴", color: "#D9CD2B" },
-  { label: "Ointments", icon: "💫", color: "#F2A81D" },
-  { label: "Lotions", icon: "🌊", color: "#0583F2" },
-  { label: "Gels", icon: "✨", color: "#1EB7D9" },
+  { label: "Tablets", icon: "💊", color: "#1fb8e5" },
+  { label: "Capsules", icon: "🔵", color: "#f6b11b" },
+  { label: "HPMC Capsules", icon: "🟡", color: "#ddd82a" },
+  { label: "Syrups", icon: "🧪", color: "#f6b11b" },
+  { label: "Sachets", icon: "📦", color: "#1fb8e5" },
+  { label: "Multivitamins", icon: "⭐", color: "#f6b11b" },
+  { label: "Creams", icon: "🧴", color: "#ddd82a" },
+  { label: "Ointments", icon: "💫", color: "#f6b11b" },
+  { label: "Lotions", icon: "🌊", color: "#1fb8e5" },
+  { label: "Gels", icon: "✨", color: "#f6b11b" },
 ];
 
 const facilities = [
@@ -60,19 +60,19 @@ export default function Manufacturing() {
     <section
       id="manufacturing"
       ref={sectionRef}
-      className="relative py-32 bg-[#080808] overflow-hidden"
+      className="relative w-full overflow-hidden bg-white py-32"
     >
       {/* Animated gradient line */}
       <div className="absolute left-0 top-0 bottom-0 w-px ml-8 lg:ml-24">
         <div
           ref={scrollLine}
-          className="w-full h-full bg-gradient-to-b from-[#0583F2] via-[#1EB7D9] to-[#D9CD2B]"
+          className="w-full h-full bg-gradient-to-b from-[#1fb8e5] via-[#f6b11b] to-[#ddd82a]"
           style={{ transform: "scaleY(0)", transformOrigin: "top center" }}
         />
       </div>
 
       {/* Glow blob */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 bg-[#0583F2]/8 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 bg-[#1fb8e5]/8 rounded-full blur-[100px] pointer-events-none" />
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-6 lg:px-8 pl-16 lg:pl-36">
         {/* Header */}
@@ -82,21 +82,21 @@ export default function Manufacturing() {
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
-          <span className="inline-block px-3 py-1 rounded-full border border-[#0583F2]/40 bg-[#0583F2]/10 text-[#1EB7D9] text-xs font-semibold tracking-widest uppercase mb-6">
+          <span className="inline-block px-3 py-1 rounded-full border border-[#1fb8e5]/40 bg-[#1fb8e5]/10 text-[#f6b11b] text-xs font-semibold tracking-widest uppercase mb-6">
             Manufacturing Unit
           </span>
 
-          <h2 className="text-4xl lg:text-6xl font-black text-white leading-tight mb-6">
+          <h2 className="text-4xl lg:text-6xl font-black text-slate-950 leading-tight mb-6">
             State-of-the-Art
             <br />
-            <span className="text-transparent bg-gradient-to-r from-[#0583F2] to-[#1EB7D9] bg-clip-text">
+            <span className="text-transparent bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text">
               Infrastructure
             </span>
           </h2>
 
-          <p className="text-white/50 max-w-xl text-base leading-relaxed font-light">
+          <p className="text-slate-500 max-w-xl text-base leading-relaxed font-light">
             Our manufacturing unit in{" "}
-            <span className="text-[#F2A81D] font-medium">SIDCUL, Haridwar</span> is equipped with
+            <span className="text-[#f6b11b] font-medium">SIDCUL, Haridwar</span> is equipped with
             the latest technology to produce a wide range of pharmaceutical and cosmetic products
             to the highest quality standards.
           </p>
@@ -108,7 +108,7 @@ export default function Manufacturing() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-4 text-white/30 text-xs tracking-widest uppercase font-medium"
+            className="mb-4 text-slate-400 text-xs tracking-widest uppercase font-medium"
           >
             Products We Manufacture
           </motion.div>
@@ -147,12 +147,12 @@ export default function Manufacturing() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * i }}
               whileHover={{ y: -4 }}
-              className="group p-6 rounded-2xl border border-white/8 bg-white/[0.03] hover:border-[#0583F2]/30 transition-all duration-300 relative overflow-hidden"
+              className="group p-6 rounded-2xl border border-slate-200 bg-white hover:border-[#1fb8e5]/30 transition-all duration-300 relative overflow-hidden"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#0583F2]/8 to-transparent rounded-2xl" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#1fb8e5]/8 to-transparent rounded-2xl" />
               <div className="text-3xl mb-4">{fac.icon}</div>
-              <h3 className="text-white font-bold text-sm mb-1">{fac.title}</h3>
-              <p className="text-white/40 text-xs leading-relaxed">{fac.desc}</p>
+              <h3 className="text-slate-950 font-bold text-sm mb-1">{fac.title}</h3>
+              <p className="text-slate-500 text-xs leading-relaxed">{fac.desc}</p>
             </motion.div>
           ))}
         </div>
