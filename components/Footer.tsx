@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = {
@@ -7,6 +8,8 @@ const footerLinks = {
   Products: ["Tablets & Capsules", "Syrups & Sachets", "Nutraceuticals", "Cosmetics"],
   Services: ["Contract Manufacturing", "Formulation Development", "Licensing", "Generic Supply"],
 };
+
+const logoSrc = "/Rivpra%20Logo.svg";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -21,16 +24,15 @@ export default function Footer() {
         <div className="py-20 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand col */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-6 group w-fit">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] flex items-center justify-center shadow-lg shadow-[#1fb8e5]/20">
-                <span className="text-slate-950 font-black text-lg">R</span>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-slate-950 font-bold text-lg tracking-tight">Rivpra</span>
-                <span className="text-[#f6b11b] text-xs tracking-[0.2em] uppercase font-medium">
-                  Formulations
-                </span>
-              </div>
+            <Link href="/" className="flex items-center mb-6 group w-fit" aria-label="Rivpra Formulations home">
+              <Image
+                src={logoSrc}
+                alt="Rivpra Formulations"
+                width={132}
+                height={160}
+                unoptimized
+                className="h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
 
             <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-xs font-light">

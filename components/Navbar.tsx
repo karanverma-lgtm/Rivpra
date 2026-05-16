@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
@@ -12,6 +13,8 @@ const navLinks = [
   { label: "Markets", href: "#markets" },
   { label: "Contact", href: "#contact" },
 ];
+
+const logoSrc = "/Rivpra%20Logo.svg";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -51,18 +54,15 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] flex items-center justify-center shadow-lg shadow-[#1fb8e5]/30 group-hover:shadow-[#1fb8e5]/50 transition-shadow duration-300">
-                <span className="text-slate-950 font-black text-lg">R</span>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-slate-950 font-bold text-lg tracking-tight">
-                  Rivpra
-                </span>
-                <span className="text-[#f6b11b] text-xs tracking-[0.2em] uppercase font-medium">
-                  Formulations
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group" aria-label="Rivpra Formulations home">
+              <Image
+                src={logoSrc}
+                alt="Rivpra Formulations"
+                width={132}
+                height={160}
+                unoptimized
+                className="h-16 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
 
             {/* Desktop Links */}
