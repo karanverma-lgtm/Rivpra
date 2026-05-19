@@ -351,3 +351,4 @@ npm run lint     # Run ESLint
 | 2026-05-19 | Hero redesigned as two-column layout: text/CTAs left, 3D particle Canvas in visible container right. Stats bar spans full width below both columns. Floating badges added. |
 | 2026-05-19 | Hero right column replaced with glassmorphism enquiry form (Name, Email, Phone, Interest, Message). Three.js/Canvas removed from Hero. Trust indicators + WHO-cGMP badge added. |
 | 2026-05-19 | Hero spacing fix: reduced headline to `text-4xl`–`text-6xl`, changed grid to `items-start`, removed scroll indicator, tightened stats padding. |
+| 2026-05-19 | Implemented top-tier mobile responsive layout: added Amazon/Nykaa-style fixed bottom navigation bar with icons (`Navbar.tsx`), hid the enquiry form on mobile view (`Hero.tsx`), and added `pb-20` padding to `<main>` (`app/page.tsx`) to prevent content hiding behind the bottom nav. |

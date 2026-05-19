@@ -181,7 +181,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             {/* Glow behind form */}
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#1fb8e5]/20 via-[#f6b11b]/10 to-[#ddd82a]/10 blur-2xl" />
