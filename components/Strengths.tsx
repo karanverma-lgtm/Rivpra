@@ -135,7 +135,7 @@ export default function Strengths() {
   const rowDelays = ROWS.map(row => row.cells.map(() => (idx++) * 0.08));
 
   return (
-    <section id="strengths" className="relative w-full overflow-hidden bg-white py-28">
+    <section id="strengths" className="relative w-full overflow-hidden bg-white py-12">
       {/* grid bg */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"

@@ -56,7 +56,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full overflow-hidden bg-white py-32">
+    <section id="contact" className="relative w-full overflow-hidden bg-white py-12">
       {/* Background accents */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-[#1fb8e5]/8 to-transparent rounded-full blur-[100px] pointer-events-none" />
 

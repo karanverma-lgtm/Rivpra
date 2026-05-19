@@ -55,7 +55,7 @@ export default function ManufacturingUnit() {
   return (
     <section
       id="manufacturing"
-      className="relative w-full overflow-hidden bg-white py-28"
+      className="relative w-full overflow-hidden bg-white py-12"
     >
       {/* Grid bg */}
       <div

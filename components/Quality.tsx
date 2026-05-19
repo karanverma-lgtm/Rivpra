@@ -44,7 +44,7 @@ export default function Quality() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="quality" className="relative w-full overflow-hidden bg-white py-32">
+    <section id="quality" className="relative w-full overflow-hidden bg-white py-12">
       {/* Radial glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[80px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(31,184,229,0.08) 0%, transparent 70%)" }} />
 

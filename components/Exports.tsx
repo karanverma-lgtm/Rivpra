@@ -49,7 +49,7 @@ export default function Exports() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="exports" className="relative w-full overflow-hidden bg-white py-28">
+    <section id="exports" className="relative w-full overflow-hidden bg-white py-12">
       {/* Grid bg */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"

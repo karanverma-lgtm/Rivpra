@@ -108,7 +108,7 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="relative w-full overflow-hidden bg-white py-32">
+    <section id="services" className="relative w-full overflow-hidden bg-white py-12">
       {/* Background watermark */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18vw] font-black text-slate-950 select-none pointer-events-none whitespace-nowrap opacity-[0.02]">
         PRODUCTS

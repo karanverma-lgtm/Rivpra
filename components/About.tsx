@@ -59,7 +59,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative w-full overflow-hidden bg-white py-32">
+    <section id="about" className="relative w-full overflow-hidden bg-white py-12">
       {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"

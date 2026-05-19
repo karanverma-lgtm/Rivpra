@@ -103,7 +103,7 @@ export default function Welcome() {
   return (
     <section
       id="welcome"
-      className="relative w-full overflow-hidden bg-white py-28"
+      className="relative w-full overflow-hidden bg-white py-12"
     >
       {/* 3D DNA Helix Background */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-25">

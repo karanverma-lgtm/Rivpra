@@ -21,7 +21,7 @@ const track = [...clients, ...clients];
 
 export default function StatsStrip() {
   return (
-    <section className="relative z-10 w-full overflow-hidden border-y border-slate-200 bg-white py-10">
+    <section className="relative z-10 w-full overflow-hidden border-y border-slate-200 bg-white py-6">
       {/* Subtle dot pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"

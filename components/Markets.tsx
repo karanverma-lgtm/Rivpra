@@ -39,7 +39,7 @@ export default function Markets() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="markets" className="relative w-full overflow-hidden bg-white py-32">
+    <section id="markets" className="relative w-full overflow-hidden bg-white py-12">
       {/* Decorative diagonal */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div
