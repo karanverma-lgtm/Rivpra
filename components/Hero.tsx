@@ -51,9 +51,9 @@ export default function Hero() {
       )
       .fromTo(
         statsRef.current?.children ?? [],
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power3.out" },
-        "-=0.4"
+        { opacity: 0, y: 40, scale: 0.8 },
+        { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 1, ease: "back.out(1.5)" },
+        "-=0.2"
       );
 
     // word cycling
@@ -361,7 +361,7 @@ export default function Hero() {
         {/* ── Stats — Full width below both columns ── */}
         <div
           ref={statsRef}
-          className="mt-8 grid grid-cols-3 sm:grid-cols-6 gap-6 pb-4 border-t border-slate-200 pt-6"
+          className="mt-8 lg:mt-12 grid grid-cols-2 gap-y-8 gap-x-4 sm:grid-cols-3 lg:grid-cols-6 pb-4 border-t border-slate-200 pt-8"
         >
           {[
             { value: "13+", label: "Years of Experience" },
@@ -371,11 +371,14 @@ export default function Hero() {
             { value: "15+", label: "Accreditations" },
             { value: "20+", label: "Global Markets Presence" },
           ].map((stat) => (
-            <div key={stat.label} className="opacity-0">
-              <div className="text-3xl lg:text-4xl font-black text-slate-950 mb-1">
+            <div 
+              key={stat.label} 
+              className="opacity-0 flex flex-col items-center lg:items-start text-center lg:text-left group"
+            >
+              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-transparent mb-1.5 transition-transform duration-300 group-hover:scale-110 group-hover:from-[#1fb8e5] group-hover:to-[#f6b11b]">
                 {stat.value}
               </div>
-              <div className="text-slate-500 text-xs tracking-widest uppercase font-medium leading-tight">
+              <div className="text-slate-500 text-[10px] sm:text-xs tracking-widest uppercase font-bold leading-relaxed max-w-[120px] lg:max-w-none">
                 {stat.label}
               </div>
             </div>
