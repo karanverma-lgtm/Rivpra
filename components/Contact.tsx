@@ -5,30 +5,111 @@ import { motion, useInView } from "framer-motion";
 
 const contactInfo = [
   {
-    label: "Location",
-    value: "SIDCUL, Haridwar, Uttarakhand, India",
-    icon: "📍",
+    label: "Corporate Office",
+    value: "Office No: 1005-1008, 11th Floor, KM Trade Tower (Radisson Blu), H-3, Kaushambi, Ghaziabad-201010, India",
+    type: "office",
     color: "#1fb8e5",
   },
   {
-    label: "Specialization",
-    value: "Contract Manufacturing · Formulation Development",
-    icon: "🏭",
+    label: "Manufacturing Works",
+    value: "Plot No. 8, Sector-6A, I.I.E., SIDCUL, Haridwar-249 403 (U.K.), India",
+    type: "works",
     color: "#f6b11b",
   },
   {
-    label: "Markets",
-    value: "Domestic & International",
-    icon: "🌍",
+    label: "Contact Phones",
+    value: "+91-8800394441, +91-8510881144, +91-9773649990",
+    type: "phone",
     color: "#ddd82a",
   },
   {
-    label: "Certification",
-    value: "ISO Certified · WHO-cGMP Compliant",
-    icon: "✅",
+    label: "Works Tel & Email",
+    value: "Tel: +91 1334 239124 / 29 · sales@rivpraformulation.com",
+    type: "email",
     color: "#f6b11b",
   },
 ];
+
+function ContactIcon({ type }: { type: string }) {
+  switch (type) {
+    case "office":
+      return (
+        <svg viewBox="0 0 100 100" className="w-7 h-7 drop-shadow-md">
+          <defs>
+            <linearGradient id="conOff" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#7dd3fc" />
+              <stop offset="100%" stopColor="#0284c7" />
+            </linearGradient>
+          </defs>
+          <path d="M30 20 L70 20 L70 90 L30 90 Z" fill="url(#conOff)" />
+          <path d="M20 50 L30 50 L30 90 L20 90 Z" fill="#0284c7" />
+          <path d="M70 50 L80 50 L80 90 L70 90 Z" fill="#0284c7" />
+          <rect x="38" y="30" width="8" height="10" rx="1" fill="#ffffff" opacity="0.8" />
+          <rect x="54" y="30" width="8" height="10" rx="1" fill="#ffffff" opacity="0.8" />
+          <rect x="38" y="48" width="8" height="10" rx="1" fill="#ffffff" opacity="0.8" />
+          <rect x="54" y="48" width="8" height="10" rx="1" fill="#ffffff" opacity="0.8" />
+          <rect x="46" y="70" width="8" height="20" fill="#ffffff" />
+        </svg>
+      );
+    case "works":
+      return (
+        <svg viewBox="0 0 100 100" className="w-7 h-7 drop-shadow-md">
+          <defs>
+            <linearGradient id="conWrk" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="100%" stopColor="#ca8a04" />
+            </linearGradient>
+          </defs>
+          <path d="M20 54 L68 54 L78 64 L78 86 L20 86 Z" fill="url(#conWrk)" />
+          <path d="M20 54 L32 42 L32 54 L44 42 L44 54 L56 42 L56 54 L68 54" fill="url(#conWrk)" />
+          <rect x="34" y="22" width="6" height="28" fill="#64748b" />
+          <rect x="46" y="16" width="6" height="34" fill="#64748b" />
+        </svg>
+      );
+    case "phone":
+      return (
+        <svg viewBox="0 0 100 100" className="w-7 h-7 drop-shadow-md">
+          <defs>
+            <linearGradient id="conPhn" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#a3e635" />
+              <stop offset="100%" stopColor="#4d7c0f" />
+            </linearGradient>
+          </defs>
+          <path d="M24 24 C24 20, 30 20, 34 24 L44 34 C48 38, 44 44, 40 48 C44 56, 52 64, 60 68 C64 64, 70 60, 74 64 L84 74 C88 78, 88 84, 84 88 C76 96, 56 96, 36 76 C16 56, 16 36, 24 24 Z" fill="url(#conPhn)" />
+        </svg>
+      );
+    case "email":
+      return (
+        <svg viewBox="0 0 100 100" className="w-7 h-7 drop-shadow-md">
+          <defs>
+            <linearGradient id="conEml" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f472b6" />
+              <stop offset="100%" stopColor="#be185d" />
+            </linearGradient>
+          </defs>
+          <rect x="18" y="26" width="64" height="48" rx="6" fill="url(#conEml)" />
+          <path d="M18 30 L50 56 L82 30" fill="none" stroke="#ffffff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+        </svg>
+      );
+    default:
+      return <ContactFallbackIcon />;
+  }
+}
+
+function ContactFallbackIcon() {
+  return (
+    <svg viewBox="0 0 100 100" className="w-7 h-7 drop-shadow-md inline-block align-middle">
+      <defs>
+        <linearGradient id="conFailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#94a3b8" />
+          <stop offset="100%" stopColor="#475569" />
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="30" fill="url(#conFailGrad)" />
+      <text x="50" y="58" textAnchor="middle" fill="#ffffff" fontSize="24" fontWeight="bold">?</text>
+    </svg>
+  );
+}
 
 export default function Contact() {
   const ref = useRef(null);
@@ -104,7 +185,7 @@ export default function Contact() {
                   className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
                   style={{ background: `${info.color}15` }}
                 >
-                  {info.icon}
+                  <ContactIcon type={info.type} />
                 </div>
                 <div>
                   <div className="text-slate-500 text-xs uppercase tracking-widest mb-1 font-medium">
@@ -148,8 +229,10 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center h-full py-12 text-center"
               >
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] flex items-center justify-center text-4xl mb-6">
-                  ✅
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#1fb8e5] to-[#f6b11b] flex items-center justify-center mb-6 shadow-lg">
+                  <svg viewBox="0 0 24 24" className="w-10 h-10 text-slate-950" fill="none" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
                 </div>
                 <div className="text-slate-950 font-black text-2xl mb-3">
                   Message Sent!

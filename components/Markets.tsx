@@ -14,7 +14,7 @@ const markets = [
       "Retail pharmacy partnerships",
       "Regional coverage across Indian states",
     ],
-    icon: "🇮🇳",
+    type: "domestic",
     color: "#1fb8e5",
     gradient: "from-[#1fb8e5]/20 to-[#f6b11b]/5",
   },
@@ -28,11 +28,94 @@ const markets = [
       "Documentation & regulatory support",
       "Flexible MOQ for global partners",
     ],
-    icon: "🌍",
+    type: "international",
     color: "#f6b11b",
     gradient: "from-[#f6b11b]/20 to-[#1fb8e5]/5",
   },
 ];
+
+function MarketIcon({ type }: { type: string }) {
+  switch (type) {
+    case "domestic":
+      return (
+        <svg viewBox="0 0 100 100" className="w-14 h-14 drop-shadow-lg">
+          <defs>
+            <linearGradient id="domGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#7dd3fc" />
+              <stop offset="100%" stopColor="#0284c7" />
+            </linearGradient>
+            <radialGradient id="domGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#1fb8e5" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#1fb8e5" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="50" cy="78" rx="35" ry="12" fill="url(#domGlow)" />
+          <path d="M25 65 Q 40 45, 50 45 Q 60 45, 75 65" fill="none" stroke="#e0f2fe" strokeWidth="2" strokeDasharray="3,3" opacity="0.8" />
+          <path d="M35 70 Q 50 55, 50 45" fill="none" stroke="#e0f2fe" strokeWidth="2" strokeDasharray="3,3" opacity="0.8" />
+          <circle cx="25" cy="65" r="4" fill="#38bdf8" />
+          <circle cx="75" cy="65" r="4" fill="#38bdf8" />
+          <path d="M50 15 C36 15 26 25 26 39 C26 53 44 71 48 75 C49 76 51 76 52 75 C56 71 74 53 74 39 C74 25 64 15 50 15 Z" fill="url(#domGrad)" />
+          <circle cx="50" cy="39" r="12" fill="#ffffff" opacity="0.85" />
+          <g transform="translate(42, 33) scale(0.16)">
+            <path d="M0 10 L100 10 L100 35 L0 35 Z" fill="#ff9933" />
+            <path d="M0 35 L100 35 L100 65 L0 65 Z" fill="#ffffff" />
+            <path d="M0 65 L100 65 L100 90 L0 90 Z" fill="#128807" />
+            <circle cx="50" cy="50" r="12" fill="none" stroke="#000080" strokeWidth="2" />
+            <circle cx="50" cy="50" r="2" fill="#000080" />
+            <path d="M50 38 L50 62 M38 50 L62 50 M41.5 41.5 L58.5 58.5 M41.5 58.5 L58.5 41.5" stroke="#000080" strokeWidth="1" />
+          </g>
+        </svg>
+      );
+    case "international":
+      return (
+        <svg viewBox="0 0 100 100" className="w-14 h-14 drop-shadow-lg">
+          <defs>
+            <linearGradient id="globeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="50%" stopColor="#fbbf24" />
+              <stop offset="100%" stopColor="#d97706" />
+            </linearGradient>
+            <radialGradient id="globeHighlight" cx="35%" cy="30%" r="60%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#fbbf24" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id="globeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#f6b11b" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#f6b11b" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="50" cy="78" rx="35" ry="12" fill="url(#globeGlow)" />
+          <circle cx="50" cy="46" r="28" fill="url(#globeGrad)" />
+          <circle cx="50" cy="46" r="28" fill="url(#globeHighlight)" />
+          <path d="M50 18 A 12 28 0 0 0 50 74 A 12 28 0 0 0 50 18 Z" fill="none" stroke="#78350f" strokeWidth="1.5" opacity="0.3" />
+          <path d="M50 18 A 24 28 0 0 0 50 74 A 24 28 0 0 0 50 18 Z" fill="none" stroke="#78350f" strokeWidth="1.5" opacity="0.15" />
+          <path d="M22 46 L78 46" fill="none" stroke="#78350f" strokeWidth="1.5" opacity="0.3" />
+          <path d="M24.5 34 A 25 12 0 0 0 75.5 34" fill="none" stroke="#78350f" strokeWidth="1.5" opacity="0.2" />
+          <path d="M24.5 58 A 25 12 0 0 1 75.5 58" fill="none" stroke="#78350f" strokeWidth="1.5" opacity="0.2" />
+          <path d="M12 55 C12 35, 88 20, 88 45 C88 65, 12 75, 12 55" fill="none" stroke="#f6b11b" strokeWidth="3" strokeLinecap="round" />
+          <circle cx="82" cy="38" r="4.5" fill="#ffffff" />
+          <circle cx="82" cy="38" r="8" fill="#f6b11b" opacity="0.5" />
+        </svg>
+      );
+    default:
+      return <MarketFallbackIcon />;
+  }
+}
+
+function MarketFallbackIcon() {
+  return (
+    <svg viewBox="0 0 100 100" className="w-14 h-14 drop-shadow-md inline-block align-middle">
+      <defs>
+        <linearGradient id="mktFailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#94a3b8" />
+          <stop offset="100%" stopColor="#475569" />
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="35" fill="url(#mktFailGrad)" />
+      <text x="50" y="58" textAnchor="middle" fill="#ffffff" fontSize="24" fontWeight="bold">?</text>
+    </svg>
+  );
+}
 
 export default function Markets() {
   const ref = useRef(null);
@@ -97,7 +180,27 @@ export default function Markets() {
               {/* Top row */}
               <div className="flex items-start justify-between mb-8">
                 <div>
-                  <div className="text-5xl mb-4">{market.icon}</div>
+                  {/* 3D Animated Icon */}
+                  <motion.div
+                    className="relative mb-6 flex-shrink-0 w-14 h-14"
+                    style={{ perspective: 400 }}
+                    animate={{
+                      y: [0, -4, 0],
+                      rotateY: [0, 8, -8, 0]
+                    }}
+                    transition={{
+                      duration: 4.5 + (i * 0.5),
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    whileHover={{
+                      scale: 1.15,
+                      rotateY: 15,
+                      z: 20
+                    }}
+                  >
+                    <MarketIcon type={market.type} />
+                  </motion.div>
                   <h3 className="text-slate-950 font-black text-2xl mb-1">
                     {market.title}
                   </h3>

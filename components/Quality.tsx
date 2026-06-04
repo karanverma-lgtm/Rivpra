@@ -8,27 +8,135 @@ const certifications = [
     title: "ISO Certified",
     desc: "International Organization for Standardization — ensuring quality management across all processes.",
     color: "#1fb8e5",
-    icon: "🏆",
+    type: "iso",
   },
   {
     title: "WHO-cGMP",
     desc: "World Health Organization current Good Manufacturing Practices — the global gold standard.",
     color: "#f6b11b",
-    icon: "✅",
+    type: "who",
   },
   {
     title: "SIDCUL Facility",
     desc: "State Industrial Development Corporation of Uttarakhand — prime industrial infrastructure.",
     color: "#ddd82a",
-    icon: "🏭",
+    type: "sidcul",
   },
   {
     title: "Debt-Free",
     desc: "Financially sound and profit-making since inception — a stable, trusted business partner.",
     color: "#f6b11b",
-    icon: "💰",
+    type: "debt",
   },
 ];
+
+function QualityIcon({ type }: { type: string }) {
+  switch (type) {
+    case "iso":
+      return (
+        <svg viewBox="0 0 100 100" className="w-12 h-12 drop-shadow-md">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fef08a" />
+              <stop offset="50%" stopColor="#f59e0b" />
+              <stop offset="100%" stopColor="#b45309" />
+            </linearGradient>
+            <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f1f5f9" />
+              <stop offset="100%" stopColor="#94a3b8" />
+            </linearGradient>
+          </defs>
+          <path d="M26 22 L74 22 L70 50 C70 60, 60 70, 50 70 C40 70, 30 60, 30 50 Z" fill="url(#goldGrad)" />
+          <path d="M26 26 C15 26, 15 42, 28 42" fill="none" stroke="url(#goldGrad)" strokeWidth="6" strokeLinecap="round" />
+          <path d="M74 26 C85 26, 85 42, 72 42" fill="none" stroke="url(#goldGrad)" strokeWidth="6" strokeLinecap="round" />
+          <rect x="46" y="70" width="8" height="12" fill="url(#goldGrad)" />
+          <ellipse cx="50" cy="84" rx="20" ry="6" fill="url(#silverGrad)" />
+        </svg>
+      );
+    case "who":
+      return (
+        <svg viewBox="0 0 100 100" className="w-12 h-12 drop-shadow-md">
+          <defs>
+            <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#34d399" />
+              <stop offset="100%" stopColor="#047857" />
+            </linearGradient>
+            <radialGradient id="greenHighlight" cx="35%" cy="30%" r="60%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#34d399" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <path d="M50 16 L80 26 L80 56 C80 72, 66 84, 50 88 C34 84, 20 72, 20 56 L20 26 Z" fill="url(#greenGrad)" />
+          <path d="M50 16 L80 26 L80 56 C80 72, 66 84, 50 88 C34 84, 20 72, 20 56 L20 26 Z" fill="url(#greenHighlight)" />
+          <path d="M38 52 L47 61 L64 38" fill="none" stroke="#ffffff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "sidcul":
+      return (
+        <svg viewBox="0 0 100 100" className="w-12 h-12 drop-shadow-md">
+          <defs>
+            <linearGradient id="facGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#38bdf8" />
+              <stop offset="100%" stopColor="#0369a1" />
+            </linearGradient>
+            <linearGradient id="chimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#64748b" />
+              <stop offset="100%" stopColor="#334155" />
+            </linearGradient>
+          </defs>
+          <rect x="36" y="20" width="8" height="30" fill="url(#chimGrad)" />
+          <rect x="48" y="15" width="8" height="35" fill="url(#chimGrad)" />
+          <circle cx="40" cy="12" r="5" fill="#e2e8f0" opacity="0.8" />
+          <circle cx="52" cy="7" r="6" fill="#e2e8f0" opacity="0.6" />
+          <path d="M22 50 L68 50 L78 60 L78 85 L22 85 Z" fill="url(#facGrad)" />
+          <path d="M22 50 L34 38 L34 50 L46 38 L46 50 L58 38 L58 50 L68 50" fill="url(#facGrad)" />
+          <rect x="30" y="62" width="8" height="12" rx="1" fill="#ffffff" opacity="0.8" />
+          <rect x="44" y="62" width="8" height="12" rx="1" fill="#ffffff" opacity="0.8" />
+          <rect x="58" y="62" width="8" height="12" rx="1" fill="#ffffff" opacity="0.8" />
+        </svg>
+      );
+    case "debt":
+      return (
+        <svg viewBox="0 0 100 100" className="w-12 h-12 drop-shadow-md">
+          <defs>
+            <linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fbbf24" />
+              <stop offset="100%" stopColor="#b45309" />
+            </linearGradient>
+            <radialGradient id="coinHighlight" cx="30%" cy="30%" r="50%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#fbbf24" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="50" cy="74" rx="28" ry="10" fill="#78350f" />
+          <ellipse cx="50" cy="70" rx="28" ry="10" fill="url(#coinGrad)" />
+          <ellipse cx="50" cy="59" rx="28" ry="10" fill="#78350f" />
+          <ellipse cx="50" cy="55" rx="28" ry="10" fill="url(#coinGrad)" />
+          <ellipse cx="50" cy="44" rx="28" ry="10" fill="#78350f" />
+          <ellipse cx="50" cy="40" rx="28" ry="10" fill="url(#coinGrad)" />
+          <ellipse cx="50" cy="40" rx="28" ry="10" fill="url(#coinHighlight)" />
+          <text x="50" y="45" textAnchor="middle" fill="#78350f" fontSize="16" fontWeight="bold">₹</text>
+        </svg>
+      );
+    default:
+      return <QualityFallbackIcon />;
+  }
+}
+
+function QualityFallbackIcon() {
+  return (
+    <svg viewBox="0 0 100 100" className="w-12 h-12 drop-shadow-md inline-block align-middle">
+      <defs>
+        <linearGradient id="qFailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#94a3b8" />
+          <stop offset="100%" stopColor="#475569" />
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="32" fill="url(#qFailGrad)" />
+      <text x="50" y="58" textAnchor="middle" fill="#ffffff" fontSize="24" fontWeight="bold">?</text>
+    </svg>
+  );
+}
 
 const qualityPoints = [
   "In-house QC laboratory with state-of-the-art testing equipment",
@@ -97,7 +205,28 @@ export default function Quality() {
                 style={{ background: cert.color }}
               />
 
-              <div className="text-4xl mb-4">{cert.icon}</div>
+              {/* 3D Animated Icon */}
+              <motion.div
+                className="relative mb-4 flex-shrink-0 w-12 h-12"
+                style={{ perspective: 400 }}
+                animate={{
+                  y: [0, -4, 0],
+                  rotateY: [0, 8, -8, 0]
+                }}
+                transition={{
+                  duration: 4.5 + (i * 0.4),
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                whileHover={{
+                  scale: 1.18,
+                  rotateY: 20,
+                  z: 25
+                }}
+              >
+                <QualityIcon type={cert.type} />
+              </motion.div>
+
               <h3
                 className="font-black text-lg mb-3"
                 style={{ color: cert.color }}

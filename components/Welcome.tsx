@@ -168,6 +168,24 @@ export default function Welcome() {
               standards.
             </p>
 
+            {/* Process Flow */}
+            <div className="mt-8 mb-10 flex items-center justify-between max-w-md bg-slate-50 border border-slate-200 rounded-2xl p-4">
+              <div className="text-center flex-1">
+                <span className="text-[9px] uppercase font-bold text-[#1fb8e5] tracking-widest block">Step 01</span>
+                <span className="text-xs sm:text-sm font-black text-slate-900">Research</span>
+              </div>
+              <div className="text-[#f6b11b] text-base px-1">→</div>
+              <div className="text-center flex-1">
+                <span className="text-[9px] uppercase font-bold text-[#f6b11b] tracking-widest block">Step 02</span>
+                <span className="text-xs sm:text-sm font-black text-slate-900">Manufacture</span>
+              </div>
+              <div className="text-[#f6b11b] text-base px-1">→</div>
+              <div className="text-center flex-1">
+                <span className="text-[9px] uppercase font-bold text-[#f6b11b] tracking-widest block">Step 03</span>
+                <span className="text-xs sm:text-sm font-black text-slate-900">Save Life</span>
+              </div>
+            </div>
+
             {/* CTA */}
             <motion.a
               href="#about"

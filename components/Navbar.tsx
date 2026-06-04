@@ -7,10 +7,13 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "About", href: "#about" },
+  { label: "Innovation", href: "#innovation" },
   { label: "Services", href: "#services" },
+  { label: "Products", href: "#products" },
   { label: "Manufacturing", href: "#manufacturing" },
   { label: "Quality", href: "#quality" },
   { label: "Markets", href: "#markets" },
+  { label: "Clients", href: "#clients" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -25,11 +28,11 @@ const mobileNavLinks = [
     ) 
   },
   { 
-    label: "Services", 
-    href: "#services", 
+    label: "Products", 
+    href: "#products", 
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 12H4M20 12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4a2 2 0 012-2m16 0V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6" />
       </svg>
     ) 
   },
@@ -56,7 +59,7 @@ const mobileNavLinks = [
     href: "#contact", 
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z" />
       </svg>
     ) 
   },
@@ -78,7 +81,7 @@ export default function Navbar() {
       lastScroll.current = current;
 
       // Simple scroll spy logic for mobile active state
-      const sections = ["contact", "quality", "services", "about"];
+      const sections = ["contact", "quality", "products", "about"];
       let found = false;
       for (const section of sections) {
         const el = document.getElementById(section);

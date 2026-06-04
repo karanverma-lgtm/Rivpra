@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = {
-  Company: ["About Us", "Services", "Manufacturing", "Quality"],
-  Products: ["Tablets & Capsules", "Syrups & Sachets", "Nutraceuticals", "Cosmetics"],
+  Company: ["About Us", "Services", "Manufacturing", "Quality", "Our Clients"],
+  Products: ["Tablets & Capsules", "Syrups & Sachets", "Nutraceuticals", "Cosmetics", "Oteria Skincare"],
   Services: ["Contract Manufacturing", "Formulation Development", "Licensing", "Generic Supply"],
 };
 
