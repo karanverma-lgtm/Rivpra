@@ -90,14 +90,14 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-white">
+    <section className="relative flex min-h-screen w-full items-start lg:items-center overflow-hidden bg-white">
       {/* Subtle background glow blobs */}
       <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-[#1fb8e5]/8 blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[400px] w-[400px] rounded-full bg-[#f6b11b]/6 blur-[120px]" />
       <div className="pointer-events-none absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-[#ddd82a]/5 blur-[100px]" />
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-8">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 lg:pt-32 pb-8">
         {/* ── Two-column grid ── */}
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
           {/* ── Left Column — Text ── */}
