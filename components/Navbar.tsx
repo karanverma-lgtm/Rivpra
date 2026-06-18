@@ -126,7 +126,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+          <div className="flex items-center justify-center lg:justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center group" aria-label="Rivpra Formulations home" onClick={(e) => { e.preventDefault(); handleNavClick("#", "Home"); }}>
               <Image
@@ -135,7 +135,7 @@ export default function Navbar() {
                 width={132}
                 height={160}
                 unoptimized
-                className="h-10 sm:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-14 sm:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
 
