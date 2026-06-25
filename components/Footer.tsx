@@ -9,10 +9,37 @@ const footerLinks = {
   Services: ["Contract Manufacturing", "Formulation Development", "Licensing", "Generic Supply"],
 };
 
+const anchorMap: Record<string, string> = {
+  "About Us": "#about",
+  "Services": "#services",
+  "Manufacturing": "#manufacturing",
+  "Quality": "#quality",
+  "Our Clients": "#clients",
+  "Tablets & Capsules": "#dosages",
+  "Syrups & Sachets": "#dosages",
+  "Nutraceuticals": "#dosages",
+  "Cosmetics": "#dosages",
+  "Oteria Skincare": "#oteria",
+  "Contract Manufacturing": "#services",
+  "Formulation Development": "#services",
+  "Licensing": "#services",
+  "Generic Supply": "#services",
+};
+
 const logoSrc = "/Rivpra%20Logo.svg";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    const href = anchorMap[link];
+    if (!href) return;
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <footer className="relative w-full overflow-hidden border-t border-slate-200 bg-white">
@@ -62,9 +89,13 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <span className="text-slate-400 text-sm hover:text-slate-600 transition-colors duration-200 cursor-default">
+                    <a
+                      href={anchorMap[link] || "#"}
+                      onClick={(e) => handleLinkClick(e, link)}
+                      className="text-slate-400 text-sm hover:text-[#1fb8e5] transition-colors duration-200"
+                    >
                       {link}
-                    </span>
+                    </a>
                   </li>
                 ))}
               </ul>

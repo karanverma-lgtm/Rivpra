@@ -3,7 +3,14 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
-const contactInfo = [
+interface ContactInfoItem {
+  label: string;
+  value: React.ReactNode;
+  type: string;
+  color: string;
+}
+
+const contactInfo: ContactInfoItem[] = [
   {
     label: "Corporate Office",
     value: "Office No: 1005-1008, 11th Floor, KM Trade Tower (Radisson Blu), H-3, Kaushambi, Ghaziabad-201010, India",
@@ -17,16 +24,74 @@ const contactInfo = [
     color: "#f6b11b",
   },
   {
-    label: "Contact Phones",
-    value: "+91-8800394441, +91-8510881144, +91-9773649990",
+    label: "General Reception",
+    value: (
+      <div className="space-y-1">
+        <div>
+          <span className="text-slate-400 font-normal">Tel:</span>{" "}
+          <a href="tel:01204277177" className="hover:text-[#1fb8e5] transition-colors">0120-4277177</a>
+        </div>
+        <div>
+          <span className="text-slate-400 font-normal">Mob:</span>{" "}
+          <a href="tel:+919205981454" className="hover:text-[#1fb8e5] transition-colors">9205981454</a> /{" "}
+          <a href="tel:+919205981455" className="hover:text-[#1fb8e5] transition-colors">1455</a> /{" "}
+          <a href="tel:+919205981456" className="hover:text-[#1fb8e5] transition-colors">1456</a>
+        </div>
+      </div>
+    ),
     type: "phone",
     color: "#ddd82a",
   },
   {
-    label: "Works Tel & Email",
-    value: "Tel: +91 1334 239124 / 29 · sales@rivpraformulation.com",
-    type: "email",
+    label: "Sales & Business Development",
+    value: (
+      <div className="space-y-1">
+        <div>
+          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Domestic Sales:</span>
+          <a href="tel:+918800394441" className="hover:text-[#1fb8e5] transition-colors">8800394441</a> &{" "}
+          <a href="tel:+918510881144" className="hover:text-[#1fb8e5] transition-colors">8510881144</a>
+        </div>
+        <div>
+          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">New Business:</span>
+          <a href="tel:+919718540207" className="hover:text-[#1fb8e5] transition-colors">9718540207</a> &{" "}
+          <a href="tel:+919311400851" className="hover:text-[#1fb8e5] transition-colors">9311400851</a>
+        </div>
+      </div>
+    ),
+    type: "phone",
+    color: "#1fb8e5",
+  },
+  {
+    label: "Purchase Department",
+    value: (
+      <div>
+        <span className="text-slate-400 font-normal">Mob:</span>{" "}
+        <a href="tel:+919205981459" className="hover:text-[#1fb8e5] transition-colors">9205981459</a>
+      </div>
+    ),
+    type: "phone",
     color: "#f6b11b",
+  },
+  {
+    label: "Email Channels",
+    value: (
+      <div className="space-y-1">
+        <div>
+          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Business:</span>
+          <a href="mailto:bd@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">bd@rivpraformulation.com</a>
+        </div>
+        <div>
+          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Sales:</span>
+          <a href="mailto:sales@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">sales@rivpraformulation.com</a>
+        </div>
+        <div>
+          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Careers:</span>
+          <a href="mailto:career@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">career@rivpraformulation.com</a>
+        </div>
+      </div>
+    ),
+    type: "email",
+    color: "#be185d",
   },
 ];
 
