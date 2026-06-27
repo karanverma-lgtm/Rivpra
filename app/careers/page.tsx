@@ -18,6 +18,7 @@ interface Job {
   type: string;
   description: string;
   requirements: string[];
+  enabled?: boolean;
 }
 
 const jobOpenings: Job[] = [
@@ -166,9 +167,11 @@ export default function Careers() {
     fetchJobs();
   }, []);
 
+  const activeJobs = jobs.filter(job => job.enabled !== false);
+
   const filteredJobs = selectedDept === "All" 
-    ? jobs 
-    : jobs.filter(job => job.department === selectedDept);
+    ? activeJobs 
+    : activeJobs.filter(job => job.department === selectedDept);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -589,7 +592,7 @@ export default function Careers() {
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:border-[#1fb8e5] focus:ring-1 focus:ring-[#1fb8e5] outline-none transition-all duration-300 bg-white"
                     >
                       <option value="">Select a position</option>
-                      {jobs.map(j => (
+                      {activeJobs.map(j => (
                         <option key={j.id} value={j.title}>{j.title}</option>
                       ))}
                       <option value="Other / General Application">Other / General Application</option>

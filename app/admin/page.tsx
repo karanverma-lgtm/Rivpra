@@ -26,6 +26,7 @@ interface Job {
   type: string;
   description: string;
   requirements: string[];
+  enabled?: boolean;
 }
 
 interface Resume {
@@ -96,11 +97,11 @@ export default function AdminPanel() {
     qualification: "",
     type: "Full-Time",
     description: "",
-    requirementsText: ""
+    requirementsText: "",
+    enabled: true
   });
 
   const departments = ["Quality Assurance", "Sales & Marketing", "Administration", "IT & Digital"];
-
   useEffect(() => {
     // Check local storage auth
     const authStatus = sessionStorage.getItem("adminAuth");
@@ -185,7 +186,8 @@ export default function AdminPanel() {
         qualification: job.qualification,
         type: job.type,
         description: job.description,
-        requirementsText: job.requirements ? job.requirements.join("\n") : ""
+        requirementsText: job.requirements ? job.requirements.join("\n") : "",
+        enabled: job.enabled !== false
       });
     } else {
       setEditingJob(null);
@@ -197,7 +199,8 @@ export default function AdminPanel() {
         qualification: "",
         type: "Full-Time",
         description: "",
-        requirementsText: ""
+        requirementsText: "",
+        enabled: true
       });
     }
     setIsJobModalOpen(true);
@@ -217,7 +220,8 @@ export default function AdminPanel() {
         qualification: jobForm.qualification,
         type: jobForm.type,
         description: jobForm.description,
-        requirements: jobForm.requirementsText.split("\n").filter(line => line.trim() !== "")
+        requirements: jobForm.requirementsText.split("\n").filter(line => line.trim() !== ""),
+        enabled: jobForm.enabled
       };
 
       await setDoc(doc(db, "jobs", jobId), finalJob);
@@ -237,6 +241,21 @@ export default function AdminPanel() {
       fetchData();
     } catch (err) {
       console.error("Error deleting job:", err);
+      setLoading(false);
+    }
+  };
+
+  const handleToggleJobStatus = async (job: Job) => {
+    setLoading(true);
+    try {
+      const updatedJob: Job = {
+        ...job,
+        enabled: job.enabled === false ? true : false
+      };
+      await setDoc(doc(db, "jobs", job.id), updatedJob);
+      fetchData();
+    } catch (err) {
+      console.error("Error toggling job status:", err);
       setLoading(false);
     }
   };
@@ -302,10 +321,28 @@ export default function AdminPanel() {
 
       // If uploading file
       if (galleryForm.sourceType === "upload" && galleryFile) {
-        const fileRef = ref(storage, `gallery/${Date.now()}_${galleryFile.name}`);
-        const uploadResult = await uploadBytes(fileRef, galleryFile);
-        finalUrl = await getDownloadURL(uploadResult.ref);
         finalFileName = galleryFile.name;
+        try {
+          const fileRef = ref(storage, `gallery/${Date.now()}_${galleryFile.name}`);
+          // Add an 8-second timeout to prevent hanging on misconfigured or slow Storage
+          const timeoutPromise = new Promise<never>((_, reject) =>
+            setTimeout(() => reject(new Error("Firebase Storage upload timeout (8s)")), 8000)
+          );
+          const uploadResult = await Promise.race([
+            uploadBytes(fileRef, galleryFile),
+            timeoutPromise
+          ]);
+          finalUrl = await getDownloadURL(uploadResult.ref);
+        } catch (storageErr) {
+          console.warn("Firebase Storage gallery upload failed or timed out, falling back to Base64:", storageErr);
+          // Fallback: convert file to Base64 data URL and store directly
+          finalUrl = await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(galleryFile);
+          });
+        }
       } else if (galleryForm.sourceType === "upload" && !finalUrl) {
         alert("Please select a file to upload or switch to external URL");
         setUploadingProgress(false);
@@ -596,13 +633,32 @@ export default function AdminPanel() {
                   className="p-6 rounded-2xl border border-white/5 bg-slate-950/40 hover:bg-slate-950/60 transition-colors duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex justify-between items-start gap-4 mb-3">
-                      <span className="px-2.5 py-1 rounded bg-[#1fb8e5]/10 text-[#1fb8e5] text-[10px] font-bold uppercase tracking-wider">
-                        {job.department}
-                      </span>
-                      <span className="px-2.5 py-1 rounded bg-white/5 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
-                        {job.location}
-                      </span>
+                    <div className="flex justify-between items-center gap-4 mb-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2.5 py-1 rounded bg-[#1fb8e5]/10 text-[#1fb8e5] text-[10px] font-bold uppercase tracking-wider">
+                          {job.department}
+                        </span>
+                        <span className="px-2.5 py-1 rounded bg-white/5 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                          {job.location}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <span className="text-[10px] font-bold uppercase text-slate-400">
+                          {job.enabled !== false ? "Active" : "Disabled"}
+                        </span>
+                        <button
+                          onClick={() => handleToggleJobStatus(job)}
+                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none ${
+                            job.enabled !== false ? "bg-emerald-500" : "bg-slate-700"
+                          }`}
+                        >
+                          <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-slate-950 transition-transform duration-300 ${
+                              job.enabled !== false ? "translate-x-6" : "translate-x-1"
+                            }`}
+                          />
+                        </button>
+                      </div>
                     </div>
                     <h3 className="text-white font-extrabold text-lg mb-1">{job.title}</h3>
                     <p className="text-slate-400 text-xs font-light mb-4">
@@ -957,6 +1013,31 @@ export default function AdminPanel() {
                         placeholder="e.g. B.Sc./ B.Pharma With 1-2 Years of Experience"
                         className="w-full px-4 py-3 rounded-xl border border-white/10 bg-slate-950 text-white text-sm focus:border-[#1fb8e5] outline-none"
                       />
+                    </div>
+
+                    <div className="flex items-center justify-between p-3.5 rounded-2xl border border-white/5 bg-slate-950/40">
+                      <div>
+                        <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Posting Status</span>
+                        <span className="text-[11px] text-slate-500 font-light">Controls visibility on the careers page</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-bold text-slate-300">
+                          {jobForm.enabled ? "Active" : "Disabled"}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setJobForm(prev => ({ ...prev, enabled: !prev.enabled }))}
+                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none ${
+                            jobForm.enabled ? "bg-emerald-500" : "bg-slate-700"
+                          }`}
+                        >
+                          <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-slate-950 transition-transform duration-300 ${
+                              jobForm.enabled ? "translate-x-6" : "translate-x-1"
+                            }`}
+                          />
+                        </button>
+                      </div>
                     </div>
                   </div>
 
