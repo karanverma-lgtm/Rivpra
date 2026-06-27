@@ -17,6 +17,10 @@ const markets = [
     type: "domestic",
     color: "#1fb8e5",
     gradient: "from-[#1fb8e5]/20 to-[#f6b11b]/5",
+    contacts: {
+      phones: ["8800394441", "8510881144"],
+      email: "sales@rivpraformulation.com"
+    }
   },
   {
     title: "International Market",
@@ -31,6 +35,10 @@ const markets = [
     type: "international",
     color: "#f6b11b",
     gradient: "from-[#f6b11b]/20 to-[#1fb8e5]/5",
+    contacts: {
+      phones: ["9718540207", "9311400851"],
+      email: "bd@rivpraformulation.com"
+    }
   },
 ];
 
@@ -251,6 +259,32 @@ export default function Markets() {
                   </li>
                 ))}
               </ul>
+
+              {/* Contact section in Markets Card */}
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <h4 className="text-slate-800 font-bold text-xs uppercase tracking-wider mb-3">
+                  Inquiries & Sales Support
+                </h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="text-slate-400 text-xs">Mob:</span>
+                    {market.contacts.phones.map((phone, idx) => (
+                      <span key={phone}>
+                        <a href={`tel:+91${phone}`} className="text-slate-700 hover:text-[#1fb8e5] font-semibold transition-colors">
+                          {phone}
+                        </a>
+                        {idx < market.contacts.phones.length - 1 && " / "}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-slate-400 text-xs">Email:</span>
+                    <a href={`mailto:${market.contacts.email}`} className="text-slate-700 hover:text-[#1fb8e5] font-semibold transition-colors">
+                      {market.contacts.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

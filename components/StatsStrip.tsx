@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const clients = [
   "/clients/client_image_1.jpg",
-  "/clients/client_image_2.jpg",
+  "/clients/ipca-laboratories-logo-png_seeklogo-449896.png",
   "/clients/client_image_3.jpg",
   "/clients/client_image_4.jpg",
   "/clients/client_image_5.jpg",
@@ -54,6 +54,7 @@ export default function StatsStrip() {
         >
           {track.map((src, i) => {
             const accent = ["#1fb8e5","#f6b11b","#ddd82a","#f6b11b"][i % 4];
+            const isIpca = src.includes("ipca-laboratories-logo");
             return (
               <div
                 key={i}
@@ -69,7 +70,7 @@ export default function StatsStrip() {
                   src={src}
                   alt={`Client ${(i % clients.length) + 1}`}
                   fill
-                  className="object-contain rounded-full p-3"
+                  className={`object-contain ${isIpca ? "p-1" : "rounded-full p-3"}`}
                   sizes="200px"
                 />
               </div>

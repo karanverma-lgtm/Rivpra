@@ -24,7 +24,7 @@ const contactInfo: ContactInfoItem[] = [
     color: "#f6b11b",
   },
   {
-    label: "General Reception",
+    label: "Reception",
     value: (
       <div className="space-y-1">
         <div>
@@ -43,30 +43,17 @@ const contactInfo: ContactInfoItem[] = [
     color: "#ddd82a",
   },
   {
-    label: "Sales & Business Development",
+    label: "API Purchase",
     value: (
       <div className="space-y-1">
         <div>
-          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Domestic Sales:</span>
-          <a href="tel:+918800394441" className="hover:text-[#1fb8e5] transition-colors">8800394441</a> &{" "}
-          <a href="tel:+918510881144" className="hover:text-[#1fb8e5] transition-colors">8510881144</a>
+          <span className="text-slate-400 font-normal">Mob:</span>{" "}
+          <a href="tel:+919205981459" className="hover:text-[#1fb8e5] transition-colors">9205981459</a>
         </div>
         <div>
-          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">New Business:</span>
-          <a href="tel:+919718540207" className="hover:text-[#1fb8e5] transition-colors">9718540207</a> &{" "}
-          <a href="tel:+919311400851" className="hover:text-[#1fb8e5] transition-colors">9311400851</a>
+          <span className="text-slate-400 font-normal">Email:</span>{" "}
+          <a href="mailto:sujata@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">sujata@rivpraformulation.com</a>
         </div>
-      </div>
-    ),
-    type: "phone",
-    color: "#1fb8e5",
-  },
-  {
-    label: "Purchase Department",
-    value: (
-      <div>
-        <span className="text-slate-400 font-normal">Mob:</span>{" "}
-        <a href="tel:+919205981459" className="hover:text-[#1fb8e5] transition-colors">9205981459</a>
       </div>
     ),
     type: "phone",
@@ -77,12 +64,8 @@ const contactInfo: ContactInfoItem[] = [
     value: (
       <div className="space-y-1">
         <div>
-          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Business:</span>
-          <a href="mailto:bd@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">bd@rivpraformulation.com</a>
-        </div>
-        <div>
-          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Sales:</span>
-          <a href="mailto:sales@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">sales@rivpraformulation.com</a>
+          <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">API Purchase:</span>
+          <a href="mailto:sujata@rivpraformulation.com" className="hover:text-[#1fb8e5] transition-colors">sujata@rivpraformulation.com</a>
         </div>
         <div>
           <span className="text-slate-400 font-normal text-xs uppercase tracking-wide block sm:inline mr-1">Careers:</span>
@@ -275,7 +258,7 @@ export default function Contact() {
               </div>
               <div className="text-slate-500 text-sm leading-relaxed">
                 Rivpra Formulations has been a reliable pharmaceutical partner
-                for over 15 years — delivering quality, consistency and value
+                for over 19 years — delivering quality, consistency and value
                 across every product we manufacture.
               </div>
             </motion.div>

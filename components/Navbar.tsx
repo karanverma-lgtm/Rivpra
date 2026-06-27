@@ -4,16 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Innovation", href: "#innovation" },
   { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
   { label: "Manufacturing", href: "#manufacturing" },
   { label: "Quality", href: "#quality" },
   { label: "Markets", href: "#markets" },
-  { label: "Clients", href: "#clients" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -41,7 +41,7 @@ const mobileNavLinks = [
     href: "#quality", 
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 013.138-3.138z" />
       </svg>
     ) 
   },
@@ -72,6 +72,8 @@ export default function Navbar() {
   const lastScroll = useRef(0);
   const [hidden, setHidden] = useState(false);
   const [activeMobileLink, setActiveMobileLink] = useState("Home");
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => {
@@ -104,6 +106,14 @@ export default function Navbar() {
 
   const handleNavClick = (href: string, label?: string) => {
     if (label) setActiveMobileLink(label);
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
+    if (pathname !== "/") {
+      router.push(href === "#" ? "/" : "/" + href);
+      return;
+    }
     if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;

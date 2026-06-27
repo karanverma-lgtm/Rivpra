@@ -264,10 +264,10 @@ export default function About() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-8 pt-12 border-t border-slate-200"
         >
-          <AnimatedStat value="15+" label="Years Experience" />
+          <AnimatedStat value="19+" label="Years Experience" />
           <AnimatedStat value="WHO" label="cGMP Certified" />
           <AnimatedStat value="100+" label="Products" />
-          <AnimatedStat value="2" label="Global Markets" />
+          <AnimatedStat value="20" label="Global Markets" />
         </motion.div>
       </div>
     </section>

@@ -1,37 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 const heroWords = ["Reliable", "Trusted", "Innovative", "ISO-Certified"];
-
-const tabletInTabletBenefits = [
-  {
-    title: "Prevents Degradation",
-    desc: "Isolates active ingredients to prevent drug degradation in the gastric environment."
-  },
-  {
-    title: "Taste & Odor Masking",
-    desc: "Conceals the bitter and unpleasant taste and odor of therapeutic compounds."
-  },
-  {
-    title: "Rapid Onset of Action",
-    desc: "Provides initial outer drug release for quick therapeutic onset."
-  },
-  {
-    title: "Superior Stability",
-    desc: "Eliminates layer separation issues commonly found in traditional bilayer tablets."
-  },
-  {
-    title: "Differential Coating",
-    desc: "Applies independent film coating and granulation technologies for each drug."
-  },
-  {
-    title: "High Dose Accuracy",
-    desc: "Achieves significantly higher weight variation accuracy compared to bilayer technology."
-  }
-];
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -181,95 +155,75 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── Right Column — Glassmorphism Tablet-In-Tablet Technology Showcase ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative hidden lg:block"
-          >
-            {/* Glow behind card */}
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#1fb8e5]/20 via-[#f6b11b]/10 to-[#ddd82a]/10 blur-2xl" />
+          {/* ── Right Column — Tablet-In-Tablet Technology Image with Premium Floating & Glassmorphism ── */}
+          <div className="relative w-full flex items-center justify-center p-4">
+            
+            {/* Ambient Animated Glows behind the card */}
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.6, 0.8, 0.6]
+              }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-[#1fb8e5]/20 via-[#ddd82a]/10 to-[#f6b11b]/15 blur-3xl pointer-events-none -z-10"
+            />
 
-            {/* Premium Dark Glassmorphism card */}
-            <div className="relative rounded-3xl border border-slate-800 bg-slate-950 p-6 sm:p-7 shadow-2xl overflow-hidden text-white">
-              {/* Decorative corner blur */}
-              <div className="absolute right-0 top-0 w-48 h-48 bg-[#1fb8e5]/10 rounded-full blur-3xl pointer-events-none" />
-              
-              {/* Top gradient bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1fb8e5] via-[#f6b11b] to-[#ddd82a]" />
+            {/* Main Floating Glassmorphic Container */}
+            <motion.div
+              animate={{ y: [0, -16, 0] }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative w-full rounded-[2rem] border border-white/50 bg-white/20 p-3 shadow-2xl backdrop-blur-md overflow-visible"
+            >
+              {/* Image wrap with skew reflections */}
+              <div className="relative rounded-[1.5rem] overflow-hidden bg-slate-100 border border-slate-200">
+                <Image
+                  src="/tablet-in-tablet.jpg"
+                  alt="India's First Tablet-In-Tablet Technology"
+                  width={1000}
+                  height={625}
+                  priority
+                  className="w-full h-auto object-cover rounded-[1.5rem]"
+                />
 
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="mb-5">
-                  <span className="inline-block px-2.5 py-1 rounded-md bg-[#1fb8e5]/10 border border-[#1fb8e5]/30 text-[#1fb8e5] text-[10px] font-bold tracking-wider uppercase mb-3">
-                    Advanced Drug Delivery
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-black mb-3 leading-tight">
-                    India's First <span className="text-transparent bg-gradient-to-r from-[#1fb8e5] to-[#f6b11b] bg-clip-text">Tablet-In-Tablet</span> Technology
-                  </h3>
-                  <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
-                    Our proprietary core-in-cup technology allows multiple incompatible active ingredients to be combined safely within a single compact dose, preventing chemical cross-interaction.
-                  </p>
-                </div>
-
-                {/* Benefits Grid */}
-                <div className="grid grid-cols-2 gap-3 mb-5">
-                  {tabletInTabletBenefits.map((benefit) => (
-                    <div 
-                      key={benefit.title} 
-                      className="p-3 rounded-xl bg-slate-900/40 border border-slate-800/80 hover:border-[#1fb8e5]/40 transition-all duration-300 group/item"
-                    >
-                      <h4 className="text-slate-200 font-bold text-xs flex items-center gap-1.5 group-hover/item:text-[#1fb8e5] transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1fb8e5] flex-shrink-0" />
-                        {benefit.title}
-                      </h4>
-                      <p className="text-slate-400 text-[10px] font-light mt-1 leading-normal">
-                        {benefit.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Footer highlights */}
-                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
-                  <span className="flex items-center gap-1.5">
-                    <svg viewBox="0 0 24 24" className="w-4 h-4 flex-shrink-0 drop-shadow text-[#1fb8e5]">
-                      <defs>
-                        <linearGradient id="microGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#7dd3fc" />
-                          <stop offset="100%" stopColor="#0284c7" />
-                        </linearGradient>
-                      </defs>
-                      <path d="M5 20h14v2H5zm11-4.7L13 13V8h2V6h-6v2h2v5l-3 2.3V18h8z" fill="url(#microGrad)" />
-                      <path d="M7 6c0-2.2 1.8-4 4-4s4 1.8 4 4" fill="none" stroke="url(#microGrad)" strokeWidth="1.5" />
-                    </svg>
-                    In-House Formulation & Dev
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg viewBox="0 0 24 24" className="w-4 h-4 flex-shrink-0 drop-shadow text-[#f6b11b]">
-                      <defs>
-                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#fef08a" />
-                          <stop offset="100%" stopColor="#ca8a04" />
-                        </linearGradient>
-                      </defs>
-                      <path d="M12 2C6.5 2 3 5 3 10c0 5.5 4.5 10 9 12 4.5-2 9-6.5 9-12 0-5-3.5-8-9-8zm0 17.8c-3.3-1.4-6.8-5-6.8-9.8 0-3.6 2.2-5.8 6.8-5.8s6.8 2.2 6.8 5.8c0 4.8-3.5 8.4-6.8 9.8z" fill="url(#shieldGrad)" />
-                    </svg>
-                    DCGI Approved Ranges
-                  </span>
-                </div>
+                {/* Glossy Reflection Sweep */}
+                <motion.div
+                  className="absolute inset-0 w-[60%] h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 pointer-events-none"
+                  initial={{ left: "-60%" }}
+                  animate={{ left: "160%" }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatDelay: 3.5,
+                    ease: "easeInOut",
+                  }}
+                />
               </div>
-            </div>
 
-            {/* Floating badge — bottom right */}
-            <div className="absolute -bottom-3 -right-2 lg:right-4 flex items-center gap-2 rounded-full border border-slate-800 bg-slate-950 px-4 py-2 shadow-lg z-10">
-              <span className="h-2 w-2 rounded-full bg-[#f6b11b] animate-pulse" />
-              <span className="text-xs font-semibold tracking-wider text-[#f6b11b]">
-                WHO-cGMP Certified
-              </span>
-            </div>
-          </motion.div>
+              {/* Parallax Floating Badge 1: Top-Left */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -left-4 z-20 rounded-2xl border border-white/60 bg-white/80 backdrop-blur-md px-4 py-2 shadow-lg text-slate-900 flex items-center gap-2"
+              >
+                <span className="h-2 w-2 rounded-full bg-[#1fb8e5] animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-wider">First in India</span>
+              </motion.div>
+
+              {/* Parallax Floating Badge 2: Bottom-Right */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -bottom-4 -right-4 z-20 rounded-2xl border border-white/60 bg-white/80 backdrop-blur-md px-4 py-2 shadow-lg text-slate-900 flex items-center gap-2"
+              >
+                <span className="h-2 w-2 rounded-full bg-[#f6b11b] animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-wider">WHO-cGMP Certified</span>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         {/* ── Stats — Full width below both columns ── */}
@@ -278,7 +232,7 @@ export default function Hero() {
           className="mt-8 lg:mt-12 grid grid-cols-2 gap-y-8 gap-x-4 sm:grid-cols-3 lg:grid-cols-6 pb-4 border-t border-slate-200 pt-8"
         >
           {[
-            { value: "13+", label: "Years of Experience" },
+            { value: "19+", label: "Years of Experience" },
             { value: "800+", label: "Product SKUs" },
             { value: "100+", label: "Clients" },
             { value: "600+", label: "Formulations" },

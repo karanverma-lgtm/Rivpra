@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = {
-  Company: ["About Us", "Services", "Manufacturing", "Quality", "Our Clients"],
+  Company: ["About Us", "Services", "Manufacturing", "Quality", "Our Clients", "Careers", "Media Gallery"],
   Products: ["Tablets & Capsules", "Syrups & Sachets", "Nutraceuticals", "Cosmetics", "Oteria Skincare"],
   Services: ["Contract Manufacturing", "Formulation Development", "Licensing", "Generic Supply"],
 };
@@ -15,6 +15,8 @@ const anchorMap: Record<string, string> = {
   "Manufacturing": "#manufacturing",
   "Quality": "#quality",
   "Our Clients": "#clients",
+  "Careers": "/careers",
+  "Media Gallery": "/gallery",
   "Tablets & Capsules": "#dosages",
   "Syrups & Sachets": "#dosages",
   "Nutraceuticals": "#dosages",
@@ -34,6 +36,7 @@ export default function Footer() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
     const href = anchorMap[link];
     if (!href) return;
+    if (href.startsWith("/")) return;
     e.preventDefault();
     const el = document.querySelector(href);
     if (el) {
@@ -87,17 +90,30 @@ export default function Footer() {
                 {section}
               </div>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href={anchorMap[link] || "#"}
-                      onClick={(e) => handleLinkClick(e, link)}
-                      className="text-slate-400 text-sm hover:text-[#1fb8e5] transition-colors duration-200"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const href = anchorMap[link] || "#";
+                  const isExternalOrSubpage = href.startsWith("/");
+                  return (
+                    <li key={link}>
+                      {isExternalOrSubpage ? (
+                        <Link
+                          href={href}
+                          className="text-slate-400 text-sm hover:text-[#1fb8e5] transition-colors duration-200"
+                        >
+                          {link}
+                        </Link>
+                      ) : (
+                        <a
+                          href={href}
+                          onClick={(e) => handleLinkClick(e, link)}
+                          className="text-slate-400 text-sm hover:text-[#1fb8e5] transition-colors duration-200"
+                        >
+                          {link}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
