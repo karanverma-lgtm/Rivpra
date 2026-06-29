@@ -12,7 +12,7 @@ const navLinks = [
   { label: "Manufacturing", href: "#manufacturing" },
   { label: "Quality", href: "#quality" },
   { label: "Markets", href: "#markets" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Media", href: "/gallery" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "#contact" },
 ];

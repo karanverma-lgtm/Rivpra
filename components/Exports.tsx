@@ -22,74 +22,95 @@ const accreditations = [
   "EFDA ETHIOPIA",
 ];
 
-interface Region {
+interface Country {
   name: string;
-  countries: string[];
+  flag?: string;
 }
 
-const regions: Region[] = [
-  {
-    name: "South East Asia (SEA) & South Asia",
-    countries: ["Myanmar", "Cambodia", "Vietnam", "Philippines", "Bangladesh", "Nepal", "Afghanistan"]
-  },
-  {
-    name: "Central Asia / CIS, Middle East & Africa",
-    countries: ["Kazakhstan", "Uzbekistan", "Azerbaijan", "Georgia", "Yemen", "Iraq", "Nigeria", "Kenya", "Ethiopia", "Gambia", "Kosovo"]
-  },
-  {
-    name: "LATAM (Latin America)",
-    countries: ["Cuba", "Guatemala", "Dominican Republic", "Bolivia", "Ecuador", "Venezuela", "Chile"]
-  }
-];
-
-interface FootprintCountry {
+interface SubRegion {
   name: string;
-  flag: string;
+  countries: Country[];
 }
 
-interface FootprintCategory {
+interface MainRegion {
   name: string;
-  countries: FootprintCountry[];
+  subRegions: SubRegion[];
 }
 
-const footprintCategories: FootprintCategory[] = [
+const globalFootprints: MainRegion[] = [
   {
-    name: "South East Asia (SEA) & South Asia",
-    countries: [
-      { name: "Myanmar", flag: "/exports/1-16.png" },
-      { name: "Cambodia", flag: "/exports/1-14.png" },
-      { name: "Vietnam", flag: "/exports/1-3-268x300.png" },
-      { name: "Philippines", flag: "/exports/1-2-268x300.png" },
-      { name: "Bangladesh", flag: "/exports/1-9-268x300.png" },
-      { name: "Nepal", flag: "/exports/1-4-268x300.png" },
-      { name: "Afghanistan", flag: "/exports/1-10-268x300.png" }
+    name: "Asia",
+    subRegions: [
+      {
+        name: "South East Asia (SEA)",
+        countries: [
+          { name: "Myanmar", flag: "/exports/1-19.png" },
+          { name: "Cambodia", flag: "/exports/1-17.png" },
+          { name: "Vietnam", flag: "/exports/1-1-268x300.png" },
+          { name: "Philippines", flag: "/exports/1-12.png" }
+        ]
+      },
+      {
+        name: "South Asia",
+        countries: [
+          { name: "Bangladesh", flag: "/exports/1-7-268x300.png" },
+          { name: "Nepal", flag: "/exports/1-2-268x300.png" },
+          { name: "Afghanistan", flag: "/exports/1-9-268x300.png" }
+        ]
+      },
+      {
+        name: "Central Asia / CIS",
+        countries: [
+          { name: "Kazakhstan", flag: "/exports/1-23-268x300.png" },
+          { name: "Uzbekistan", flag: "/exports/1-24-268x300.png" },
+          { name: "Azerbaijan", flag: "/exports/1-13.png" },
+          { name: "Georgia", flag: "/exports/1-22-268x300.png" }
+        ]
+      }
     ]
   },
   {
-    name: "Central Asia / CIS, Middle East & Africa",
-    countries: [
-      { name: "Kazakhstan", flag: "/exports/1-19.png" },
-      { name: "Uzbekistan", flag: "/exports/1-20.png" },
-      { name: "Georgia", flag: "/exports/1-18.png" },
-      { name: "Yemen", flag: "/exports/1-8-268x300.png" },
-      { name: "Iraq", flag: "/exports/1-13.png" },
-      { name: "Nigeria", flag: "/exports/1-7-268x300.png" },
-      { name: "Kenya", flag: "/exports/1-1-268x300.png" },
-      { name: "Gambia", flag: "/exports/1-5-268x300.png" },
-      { name: "Kosovo", flag: "/exports/1-23-268x300.png" },
-      { name: "Ethiopia", flag: "/exports/1-24-268x300.png" }
+    name: "Middle East & Africa (MEA)",
+    subRegions: [
+      {
+        name: "Middle East",
+        countries: [
+          { name: "Yemen", flag: "/exports/1-6-268x300.png" },
+          { name: "Iraq", flag: "/exports/1-16.png" }
+        ]
+      },
+      {
+        name: "Africa",
+        countries: [
+          { name: "Nigeria", flag: "/exports/1-5-268x300.png" },
+          { name: "Kenya", flag: "/exports/1-11.png" },
+          { name: "Ethiopia", flag: "/exports/1-15.png" },
+          { name: "Gambia", flag: "/exports/1-3-268x300.png" }
+        ]
+      }
     ]
   },
   {
-    name: "LATAM (Latin America)",
-    countries: [
-      { name: "Cuba", flag: "/exports/1-11.png" },
-      { name: "Guatemala", flag: "/exports/1-12.png" },
-      { name: "Dominican Republic", flag: "/exports/1-15.png" },
-      { name: "Bolivia", flag: "/exports/1-6-268x300.png" },
-      { name: "Ecuador", flag: "/exports/1-21-268x300.png" },
-      { name: "Venezuela", flag: "/exports/1-17.png" },
-      { name: "Chile", flag: "/exports/1-22-268x300.png" }
+    name: "Latin America & Balkans",
+    subRegions: [
+      {
+        name: "Latin America (LATAM)",
+        countries: [
+          { name: "Cuba", flag: "/exports/1-8-268x300.png" },
+          { name: "Guatemala", flag: "/exports/1-20.png" },
+          { name: "Dominican Republic", flag: "/exports/1-18.png" },
+          { name: "Bolivia", flag: "/exports/1-4-268x300.png" },
+          { name: "Ecuador", flag: "/exports/ecuador-flag.png" },
+          { name: "Venezuela", flag: "/exports/1-21-268x300.png" },
+          { name: "Chile", flag: "/exports/chile-flag.png" }
+        ]
+      },
+      {
+        name: "Balkans",
+        countries: [
+          { name: "Kosovo", flag: "/exports/1-14.png" }
+        ]
+      }
     ]
   }
 ];
@@ -149,34 +170,43 @@ export default function Exports() {
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="space-y-4 max-h-[350px] overflow-y-auto pr-2 scrollbar-thin"
+            className="space-y-6 max-h-[380px] overflow-y-auto pr-2 scrollbar-thin"
             data-lenis-prevent
           >
             <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
               Countries We Serve
             </p>
-            {regions.map((reg, regIdx) => (
-              <div key={reg.name} className="space-y-1.5">
-                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                  {reg.name}
+            {globalFootprints.map((mainReg, mainIdx) => (
+              <div key={mainReg.name} className="space-y-3 pt-3 border-t border-slate-100 first:border-0 first:pt-0">
+                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                  {mainReg.name}
                 </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {reg.countries.map((c, i) => {
-                    const color = accentColors[(i + regIdx) % 4];
-                    return (
-                      <span
-                        key={c}
-                        className="rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
-                        style={{
-                          borderColor: `${color}40`,
-                          color: color,
-                          background: `${color}0D`,
-                        }}
-                      >
-                        {c}
-                      </span>
-                    );
-                  })}
+                <div className="pl-3 space-y-3">
+                  {mainReg.subRegions.map((subReg, subIdx) => (
+                    <div key={subReg.name} className="space-y-1.5">
+                      <h5 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        {subReg.name}
+                      </h5>
+                      <div className="flex flex-wrap gap-1.5">
+                        {subReg.countries.map((c, i) => {
+                          const color = accentColors[(i + subIdx + mainIdx) % 4];
+                          return (
+                            <span
+                              key={c.name}
+                              className="rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
+                              style={{
+                                borderColor: `${color}40`,
+                                color: color,
+                                background: `${color}0D`,
+                              }}
+                            >
+                              {c.name}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -248,35 +278,53 @@ export default function Exports() {
 
         {/* ── Grouped Categorized Flag Grid ── */}
         <div className="grid lg:grid-cols-3 gap-6 mt-12">
-          {footprintCategories.map((cat, catIdx) => (
+          {globalFootprints.map((mainReg, mainIdx) => (
             <motion.div
-              key={cat.name}
+              key={mainReg.name}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + (catIdx * 0.15) }}
+              transition={{ duration: 0.6, delay: 0.3 + (mainIdx * 0.15) }}
               className="p-6 rounded-3xl border border-slate-200/80 bg-slate-50/20 backdrop-blur-sm flex flex-col justify-between"
             >
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex items-center gap-2.5 pb-3 border-b border-slate-200/60">
                   <span className="w-1.5 h-5 rounded-full bg-gradient-to-b from-[#1fb8e5] to-[#f6b11b]" />
-                  <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider leading-tight">
-                    {cat.name}
+                  <h4 className="text-sm font-black text-slate-800 uppercase tracking-wider leading-tight">
+                    {mainReg.name}
                   </h4>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {cat.countries.map((c) => (
-                    <div
-                      key={c.name}
-                      className="group relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:border-[#1fb8e5]/40 hover:shadow-md flex items-center justify-center"
-                    >
-                      <Image
-                        src={c.flag}
-                        alt={c.name}
-                        fill
-                        className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-                        sizes="80px"
-                      />
+                <div className="space-y-5">
+                  {mainReg.subRegions.map((subReg) => (
+                    <div key={subReg.name} className="space-y-2">
+                      <h5 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        {subReg.name}
+                      </h5>
+                      <div className="flex flex-wrap gap-3">
+                        {subReg.countries
+                          .filter((c) => c.flag)
+                          .map((c) => (
+                            <div
+                              key={c.name}
+                              className="flex flex-col items-center gap-1"
+                            >
+                              <div
+                                className="group relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:border-[#1fb8e5]/40 hover:shadow-md flex items-center justify-center"
+                              >
+                                <Image
+                                  src={c.flag!}
+                                  alt={c.name}
+                                  fill
+                                  className="object-contain p-1.5 transition-transform duration-500 group-hover:scale-105"
+                                  sizes="64px"
+                                />
+                              </div>
+                              <span className="text-[8px] font-bold uppercase tracking-wider text-slate-500 text-center leading-tight max-w-[64px]">
+                                {c.name}
+                              </span>
+                            </div>
+                          ))}
+                      </div>
                     </div>
                   ))}
                 </div>
